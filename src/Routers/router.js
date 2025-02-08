@@ -2,22 +2,6 @@ import { Router } from "express";
 
 const router = Router();
 
-// Les routes de notre API CRUD de gestion des utilisateurs
-router.get("/api/users", (req, res) => {
-	res.send("coucou");
-});
-router.get("/api/users/profil");
-router.post("/api/users");
-router.patch("/api/users/patch");
-router.delete("/api/users/delete");
-
-// Les routes de notre API CRUD de gestion des pronostics
-router.get("/api/pronos");
-router.get("/api/pronos/:id");
-router.post("/api/pronos");
-router.patch("/api/pronos/:id");
-router.delete("/api/pronos/:id");
-
 // Les routes de notre API CRUD de gestion des résultats des matchs de football passés
 router.get("/api/results");
 
