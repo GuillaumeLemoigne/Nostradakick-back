@@ -18,7 +18,7 @@ router.post("/api/pronos");
 router.patch("/api/pronos/:id");
 router.delete("/api/pronos/:id");
 
-// Les routes de notre API CRUD de gestion des résultats des matchs de football passés
+// Les routes de notre API de gestion des résultats des matchs de football passés
 router.get("/api/results");
 
 // La routes de notre API de consultation du calendrier des matchs à venir dans la compétition
