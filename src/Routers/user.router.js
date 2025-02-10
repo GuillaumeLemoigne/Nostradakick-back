@@ -11,4 +11,4 @@ userRouter.post("/api/users");
 userRouter.patch("/api/users/patch");
 userRouter.delete("/api/users/delete");
 
-export default userRouter;
+export { userRouter };

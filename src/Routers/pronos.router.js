@@ -9,4 +9,4 @@ pronosRouter.post("/api/pronos");
 pronosRouter.patch("/api/pronos/:id");
 pronosRouter.delete("/api/pronos/:id");
 
-export default pronosRouter;
+export { pronosRouter };
