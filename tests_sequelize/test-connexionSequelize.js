@@ -1,4 +1,4 @@
-import {sequelize} from './src/sequelize.js';
+import {sequelize} from '../src/sequelize.js';
 
 async function testConnection() {
   try {
