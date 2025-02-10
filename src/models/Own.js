@@ -5,6 +5,11 @@ class Own extends Model {}
 
 Own.init(
 	{
+		own_id: {
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			primaryKey: true,
+		  },
 		competition_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

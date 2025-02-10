@@ -5,6 +5,11 @@ class Play extends Model {}
 
 Play.init(
 	{
+		play_id: {
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			primaryKey: true,
+		  },
 		match_id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
@@ -15,7 +20,10 @@ Play.init(
 		},
 		role: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			// Empêche les autres valeurs autres que "home" et "away"
+			validate: {
+				isIn: [['home', 'away']], 
+			}
 		},
 	},
 	{

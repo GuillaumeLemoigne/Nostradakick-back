@@ -1,10 +1,16 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../sequelize.js";
 
-class User extends Model {}
+class Player extends Model {}
 
-User.init(
+Player.init(
 	{
+		player_id: {
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			primaryKey: true,
+		  },
+
 		first_name: {
 			type: DataTypes.STRING,
 		},
@@ -27,12 +33,13 @@ User.init(
 
 		password: {
 			type: DataTypes.TEXT,
+			allowNull: false,
 		},
 	},
 	{
 		sequelize,
-		tableName: "user",
+		tableName: "player",
 	},
 );
 
-export { User };
+export { Player };

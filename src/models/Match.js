@@ -5,9 +5,10 @@ class Match extends Model {}
 
 Match.init(
 	{
-		competition_id: {
+		match_id: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
+			autoIncrement: true,
+			primaryKey: true,
 		},
 		date: {
 			type: DataTypes.DATE,
@@ -21,17 +22,18 @@ Match.init(
 
 		score_home: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 
 		score_away: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
 		},
 
 		outcome: {
 			type: DataTypes.STRING,
-			allowNull: false,
+			// Empêche les autres valeurs autres que "home", "away" et "neutral"
+			validate: {
+				isIn: [['home', 'away', 'neutral']], 
+			}
 		},
 	},
 	{

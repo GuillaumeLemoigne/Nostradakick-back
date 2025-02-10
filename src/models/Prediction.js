@@ -6,7 +6,13 @@ class Prediction extends Model {}
 Prediction.init(
 	// lorsqu'une prediction est créée, l'utilisateur s'est loggué (il existe obligatoirement) et le match est déjà en base de donnée (donc il existe aussi obligatoirement)
 	{
-		user_id: {
+		prediction_id: {
+			type: DataTypes.INTEGER,
+			autoIncrement: true,
+			primaryKey: true,
+		  },
+		  
+		player_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
