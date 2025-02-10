@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { router } from "./src/router.js";
+import { router } from "./src/Router/router.js";
 import expressSanitizer from "express-sanitizer";
 import cors from "cors";
 
