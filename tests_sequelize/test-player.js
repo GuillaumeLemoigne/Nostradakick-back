@@ -1,4 +1,4 @@
-import {Player} from "../src/models/Player.js"
+import {Player} from "../src/models/associations.js"
 
 
 // * === CRUD DE LA TABLE competition ===
@@ -21,7 +21,7 @@ async function createUser () {
         console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
-// createUser();
+createUser();
 
 // *** DELETE ***
 
@@ -43,6 +43,6 @@ async function deletePlayer () {
     }
 };
 
-deletePlayer()
+// deletePlayer()
 
 

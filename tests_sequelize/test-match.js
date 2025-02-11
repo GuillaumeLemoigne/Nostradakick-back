@@ -1,4 +1,4 @@
-import {Match} from "../src/models/Match.js"
+import {Match} from "../src/models/associations.js"
 
 
 // * === CRUD DE LA TABLE competition ===
@@ -19,7 +19,7 @@ async function createMatch () {
         console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
-// createMatch();
+createMatch();
 
 // *** DELETE ***
 
@@ -41,4 +41,4 @@ async function deleteMatch () {
     }
 };
 
-deleteMatch()
+// deleteMatch()

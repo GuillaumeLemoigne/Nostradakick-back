@@ -12,7 +12,7 @@ Competition.hasMany(Match, {
 	foreignKey: "competition_id",
 });
 
-Match.hasOne(Competition, {
+Match.belongsTo(Competition, {
 	as: "competition",
 });
 
@@ -33,15 +33,15 @@ Team.belongsToMany(Competition, {
 Team.belongsToMany(Match, {
 	as: "match",
 	through: Play,
-	foreignKey: "match_id",
-	otherKey: "team_id",
+	foreignKey: "team_id",
+	otherKey: "match_id",
 });
 
 Match.belongsToMany(Team, {
 	as: "team",
 	through: Play,
-	foreignKey: "team_id",
-	otherKey: "match_id",
+	foreignKey: "match_id",
+	otherKey: "team_id",
 });
 
 Player.hasMany(Prediction, {
@@ -49,11 +49,11 @@ Player.hasMany(Prediction, {
 	foreignKey: "player_id",
 });
 
-Prediction.hasOne(Player, {
+Prediction.belongsTo(Player, {
 	as: "player",
 });
 
-Prediction.hasOne(Match, {
+Prediction.belongsTo(Match, {
 	as: "match",
 });
 

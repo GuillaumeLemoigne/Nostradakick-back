@@ -1,4 +1,4 @@
-import { Team } from "../src/models/Team.js";
+import { Team } from "../src/models/associations.js";
 
 // * === CRUD DE LA TABLE team ===
 
@@ -18,8 +18,8 @@ async function createTeam() {
     console.error("Ouuuppppps, ya comme un hic!", error.message);
   }
 }
-/* createTeam();
- */
+createTeam();
+
 // *** DELETE ***
 
 // 2 - Suppression de l'entrée dans la table team
@@ -38,8 +38,7 @@ async function deleteTeam() {
   }
 }
 
-/* deleteTeam()
- */
+// deleteTeam()
 
 // *** UPDATE ***
 
@@ -66,4 +65,4 @@ async function updateTeam() {
   }
 }
 
-updateTeam();
+// updateTeam();

@@ -36,9 +36,9 @@ Player.init(
 			allowNull: false,
 		},
 
-		picture:{
-			type : DataTypes.TEXT,
-			allowNull: false
+		picture: {
+			type: DataTypes.TEXT,
+			
 		}
 	},
 	{

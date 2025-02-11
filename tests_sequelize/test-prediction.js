@@ -1,4 +1,4 @@
-import { Prediction } from "../src/models/Prediction.js";
+import { Prediction } from "../src/models/associations.js";
 
 // * === CRUD DE LA TABLE prediction ===
 
@@ -20,7 +20,7 @@ async function createPrediction() {
     console.error("Ouuuppppps, ya comme un hic!", error.message);
   }
 }
-/* createPrediction(); */
+createPrediction();
 
 // *** DELETE ***
 
@@ -68,4 +68,4 @@ async function updatePrediction() {
   }
 }
 
-updatePrediction();
+// updatePrediction();

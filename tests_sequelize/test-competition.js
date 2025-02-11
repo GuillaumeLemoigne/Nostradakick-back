@@ -9,17 +9,17 @@ import { Competition }  from "../src/models/Competition.js"
 async function createCompetition () {
     try {
         const newCompetition = await Competition.create({ 
-            name: "ligue 2",
+            name: "ligue 5",
             season: "2025",
             logo: "waw"
          });
-         console.log(json.stringify(createCompetition, null, 2));
+         console.log(JSON.stringify(newCompetition, null, 2));
          
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!",error.message)
+        console.error("Ouuuppppps, ya comme un hic!",error.message);
     }
 };
-// createCompetition();
+createCompetition();
 
 
 // *** READ ***
@@ -94,7 +94,7 @@ async function deleteCompetition () {
         const competitionDelete = await Competition.destroy(
             {
                 where: {
-                    name: "ligue 3",
+                    name: "ligue 4",
                 },
             }
         );
@@ -105,4 +105,4 @@ async function deleteCompetition () {
     }
 };
 
-/* deleteCompetition() */
+// deleteCompetition()
