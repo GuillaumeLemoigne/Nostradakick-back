@@ -19,28 +19,28 @@ Match.belongsTo(Competition, {
 
 Competition.belongsToMany(Team, {
 	as: "team",
-	through: Own,
+	through: "Own",
 	foreignKey: "competition_id",
 	otherKey: "team_id",
 });
 
 Team.belongsToMany(Competition, {
 	as: "competition",
-	through: Own,
+	through: "Own",
 	foreignKey: "team_id",
 	otherKey: "competition_id",
 });
 
 Team.belongsToMany(Match, {
 	as: "match",
-	through: Play,
+	through: "Play",
 	foreignKey: "team_id",
 	otherKey: "match_id",
 });
 
 Match.belongsToMany(Team, {
 	as: "team",
-	through: Play,
+	through: "Play",
 	foreignKey: "match_id",
 	otherKey: "team_id",
 });

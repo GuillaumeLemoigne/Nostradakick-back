@@ -4,7 +4,24 @@ const predictionController = {
   // Méthode pour récupérer tous les pronostics
   getAllPredictions: async (req, res) => {
     try {
-      const allPredictions = await Prediction.findAll();
+      const allPredictions = await Prediction.findAll({
+        include: [
+            {
+                association: "player",  
+            },
+            {
+                association: "match",
+                include: [
+                    {
+                        association: "team",
+                        through: {
+                            attributes: []
+                        }
+                    }
+                ]
+            }
+        ]
+      });
       console.log(JSON.stringify(allPredictions, null, 2));
      return res.status(200).json(allPredictions);
     } catch (error) {
@@ -95,6 +112,18 @@ const predictionController = {
             return res.status(500).json({ message: 'Internal Server Error' });
         }
     },
+
+    // getPredictionsPage: async (req, res) => {
+    //     try {
+    //         const predictionsPage = await Prediction.findAll({
+
+    //         });
+    //   console.log(JSON.stringify(allPredictions, null, 2));
+    //  return res.status(200).json(allPredictions);
+    // } catch (error) {
+    //   console.error(error.message);
+    //     }
+    // }
 }
 
 
