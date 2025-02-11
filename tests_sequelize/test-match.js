@@ -16,7 +16,7 @@ async function createMatch () {
          console.log(JSON.stringify(newMatch, null, 2));
          
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // createMatch();
@@ -37,7 +37,7 @@ async function deleteMatch () {
         // On affiche le résultat
         console.log(JSON.stringify(matchDelete, null, 2));
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 

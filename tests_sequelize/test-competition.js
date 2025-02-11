@@ -16,7 +16,7 @@ async function createCompetition () {
          console.log(json.stringify(createCompetition, null, 2));
          
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // createCompetition();
@@ -33,7 +33,7 @@ async function getAllCompetitions () {
         // JSON.stringify permet de récupérer le résultat
         // au format "string" afin de pouvoir le lire correctement
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // getAllCompetitions();
@@ -52,7 +52,7 @@ async function getOneCompetition () {
         // JSON.stringify permet de récupérer le résultat
         // au format "string" afin de pouvoir le lire correctement
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // getOneCompetition();
@@ -77,7 +77,7 @@ async function updateCompetition () {
         console.log(JSON.stringify(competitionUpdate, null, 2));
         // On affiche le résultat
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 
@@ -101,7 +101,7 @@ async function deleteCompetition () {
         // On affiche le résultat
         console.log(JSON.stringify(competitionDelete, null, 2));
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 

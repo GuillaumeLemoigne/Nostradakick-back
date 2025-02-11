@@ -35,6 +35,11 @@ Player.init(
 			type: DataTypes.TEXT,
 			allowNull: false,
 		},
+
+		picture:{
+			type : DataTypes.TEXT,
+			allowNull: false
+		}
 	},
 	{
 		sequelize,

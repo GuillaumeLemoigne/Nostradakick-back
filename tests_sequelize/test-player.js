@@ -18,7 +18,7 @@ async function createUser () {
          console.log(JSON.stringify(newUser, null, 2));
          
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // createUser();
@@ -39,8 +39,10 @@ async function deletePlayer () {
         // On affiche le résultat
         console.log(JSON.stringify(playerDelete, null, 2));
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 
 deletePlayer()
+
+
