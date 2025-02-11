@@ -1,12 +1,13 @@
 import { Router } from "express";
+import predictionController from "../controllers/prediction.controller.js";
 
 const pronosRouter = Router();
 
 // Les routes de notre API CRUD de gestion des pronostics
-pronosRouter.get("/api/predictions", predictionController.getAllPrediction);
+pronosRouter.get("/api/predictions", predictionController.getAllPredictions);
 pronosRouter.get("/api/predictions/:id", predictionController.getOnePrediction);
-pronosRouter.post("/api/predictions");
-pronosRouter.patch("/api/predictions/:id");
-pronosRouter.delete("/api/predictions/:id");
+pronosRouter.post("/api/predictions", predictionController.createOnePrediction);
+pronosRouter.patch("/api/predictions/:id", predictionController.patchOnePrediction);
+pronosRouter.delete("/api/predictions/:id", predictionController.deleteOnePrediction);
 
 export { pronosRouter };

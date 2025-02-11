@@ -14,6 +14,7 @@ Competition.hasMany(Match, {
 
 Match.belongsTo(Competition, {
 	as: "competition",
+	foreignKey: "competition_id",
 });
 
 Competition.belongsToMany(Team, {
@@ -51,10 +52,12 @@ Player.hasMany(Prediction, {
 
 Prediction.belongsTo(Player, {
 	as: "player",
+	foreignKey: "player_id",
 });
 
 Prediction.belongsTo(Match, {
 	as: "match",
+	foreignKey: "match_id",
 });
 
 Match.hasMany(Prediction, {
