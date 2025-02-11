@@ -6,7 +6,7 @@ const predictionController = {
     try {
       const allPredictions = await Prediction.findAll();
       console.log(JSON.stringify(allPredictions, null, 2));
-      res.status(200).json(allPredictions);
+     return res.status(200).json(allPredictions);
     } catch (error) {
       console.error(error.message);
     }
@@ -22,13 +22,13 @@ const predictionController = {
         });
 
         if (onePrediction) {
-            res.status(200).json(onePrediction);
+           return res.status(200).json(onePrediction);
         } else {
             res.status(404).json({ message: 'Prediction not found' });
         }
         } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ message: 'Internal Server Error' });
+            console.log(error.message);
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
     },
 
@@ -36,13 +36,13 @@ const predictionController = {
         try {
             const createPrediction = await Prediction.create(req.body);
             if (createPrediction) {
-                res.status(201).json(createPrediction);
+                return res.status(201).json(createPrediction);
             } else {
-                res.status(404).json({ message: 'Prediction not created' });
+                return res.status(404).json({ message: 'Prediction not created' });
             }
         } catch (error) {
             console.log(error.message);
-            res.status(500).json({ message: 'Internal Server Error' });
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
     },
 
@@ -50,27 +50,27 @@ const predictionController = {
         try {
             const patchPrediction = await Prediction.findByPk(req.params.id);
             if (!patchPrediction){
-                res.status(404).json({ message: 'Prediction not found' });
+               return res.status(404).json({ message: "Vous n'avez rien modifié" });
             } 
             const {score_predi_home, score_predi_away} = req.body;
             
-            if (score_predi_away === '' && score_predi_home === '') {
-                res.status(404).json({ message: 'Prediction not found' });
+            if (!score_predi_away && !score_predi_home) {
+               return res.status(404).json({ message: 'Seuls les scores peuvent être modifiés' });
                 console.log("coucou remplis moi!");
                 
             }
-            if (score_predi_home) {
+            if (score_predi_home !== undefined) {
                     patchPrediction.score_predi_home = score_predi_home;
                 }
-            if (score_predi_away) {
+            if (score_predi_away !== undefined) {
                     patchPrediction.score_predi_away = score_predi_away;
                 }
                 await patchPrediction.save();
 
-                res.status(200).json(patchPrediction);
+               return res.status(200).json(patchPrediction);
         } catch (error) {
                 console.log(error.message);
-                res.status(500).json({ message: 'Internal Server Error' });
+               return res.status(500).json({ message: 'Internal Server Error' });
         }
                 
             
@@ -86,13 +86,13 @@ const predictionController = {
                 }
             });
             if (deletePrediction) {
-                res.status(200).json(deletePrediction);
+                return res.status(200).json(deletePrediction);
             } else {
-                res.status(404).json({ message: 'Prediction not found' });
+                return res.status(404).json({ message: 'Prediction not found' });
             }
         } catch (error) {
-        console.log(error.message);
-        res.status(500).json({ message: 'Internal Server Error' });
+            console.log(error.message);
+            return res.status(500).json({ message: 'Internal Server Error' });
         }
     },
 }
