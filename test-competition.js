@@ -105,4 +105,4 @@ async function deleteCompetition () {
     }
 };
 
-deleteCompetition()
+/* deleteCompetition() */
