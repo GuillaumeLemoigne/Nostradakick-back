@@ -1,4 +1,4 @@
-import { Competition }  from "./src/models/Competition.js"
+import { Competition }  from "../src/models/Competition.js"
 
 
 // * === CRUD DE LA TABLE competition ===

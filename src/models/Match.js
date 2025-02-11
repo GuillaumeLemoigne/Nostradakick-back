@@ -10,6 +10,13 @@ Match.init(
 			autoIncrement: true,
 			primaryKey: true,
 		},
+
+		competition_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		// Date au format ISO 8601:
+		// YYYY-MM-DDTHH:mm:ss.sssZ
 		date: {
 			type: DataTypes.DATE,
 			allowNull: false,
