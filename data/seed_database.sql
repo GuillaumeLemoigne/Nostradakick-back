@@ -42,7 +42,7 @@ COMMIT; -- ✅ On valide les matchs
 
 BEGIN;
 
-INSERT INTO "player"
+INSERT INTO "user"
 ("first_name","last_name","pseudo","email","password")
 VALUES
 ('fabien','le goat','fabio','fabien.legoat@nostra.com','nostra'),
@@ -62,47 +62,47 @@ COMMIT;
 BEGIN;
 
 INSERT INTO "prediction"
-("player_id","match_id","score_predi_home","score_predi_away","points_score","points_outcome")
+("user_id","match_id","score_predi_home","score_predi_away","points_score","points_outcome")
 
 VALUES
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'fabio'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'fabio'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
  3, 1, 3, 3),
  
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'zizou'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'zizou'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Vélodrome') LIMIT 1),
  2, 2, 1, 1),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'lulu'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'lulu'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis II') LIMIT 1),
  1, 0, 3, 3),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'marinette'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'marinette'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Pierre-Mauroy') LIMIT 1),
  2, 1, 0, 1),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'juju'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'juju'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Allianz Riviera') LIMIT 1),
  1, 3, 0, 0),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'so'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'so'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis')LIMIT 1),
  2, 0, 3, 3),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'keke'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'keke'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes')  LIMIT 1),
  2, 2, 1, 1),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'amie'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'amie'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Vélodrome') LIMIT 1),
  3, 2, 3, 3),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'tomtom'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'tomtom'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis II') LIMIT 1),
  0, 1, 0, 1),
 
-((SELECT "player_id" FROM "player" WHERE "pseudo" = 'cami'),
+((SELECT "user_id" FROM "user" WHERE "pseudo" = 'cami'),
  (SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Pierre-Mauroy') LIMIT 1),
  1, 1, 1, 1);
 
@@ -150,7 +150,7 @@ VALUES
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'home'),
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis') LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'away');
- */
+
  
 
 -- ✅ TABLE `own` POUR COMPÉTITIONS ET ÉQUIPES

@@ -8,7 +8,7 @@ import { Prediction } from "../src/models/associations.js";
 async function createPrediction() {
   try {
     const newPrediction = await Prediction.create({
-      player_id: "2",
+      user_id: "2",
       match_id: "1",
       score_predi_home: "1",
       score_predi_away: "0",
@@ -30,7 +30,7 @@ async function deletePrediction() {
   try {
     const predictionDelete = await Prediction.destroy({
       where: {
-        player_id: "2",
+        user_id: "2",
       },
     });
     // On affiche le résultat
@@ -55,7 +55,7 @@ async function updatePrediction() {
       },
       {
         where: {
-          player_id: "2",
+          user_id: "2",
           match_id: "1",
           
         },

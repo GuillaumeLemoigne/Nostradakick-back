@@ -1,4 +1,4 @@
-import {Player} from "../src/models/associations.js"
+import {User} from "../src/models/associations.js"
 
 
 // * === CRUD DE LA TABLE competition ===
@@ -8,7 +8,7 @@ import {Player} from "../src/models/associations.js"
 // 1 - Création d'une nouvelle entrée dans la table competition
 async function createUser () {
     try {
-        const newUser = await Player.create({ 
+        const newUser = await User.create({ 
             first_name: "jojo",
             last_name:"jojo",
             pseudo: "jojo",
@@ -27,9 +27,9 @@ createUser();
 
 // 2 - Suppression de l'entrée dans la table competition
 
-async function deletePlayer () {
+async function deleteUser () {
     try {
-        const playerDelete = await Player.destroy(
+        const userDelete = await User.destroy(
             {
                 where: {
                     first_name: "jojo",
@@ -37,12 +37,12 @@ async function deletePlayer () {
             }
         );
         // On affiche le résultat
-        console.log(JSON.stringify(playerDelete, null, 2));
+        console.log(JSON.stringify(userDelete, null, 2));
     } catch (error) {
         console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 
-// deletePlayer()
+// deleteUser()
 
 
