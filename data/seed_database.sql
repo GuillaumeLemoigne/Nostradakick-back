@@ -13,12 +13,12 @@ BEGIN;
 INSERT INTO "team"
 ("name","country","city","logo")
 VALUES
-('paris saint-germain', 'france', 'paris', 'psg_logo.png'),
-('olympique de marseille', 'france', 'marseille', 'om_logo.png'),
-('as monaco', 'france', 'monaco', 'asm_logo.png'),
-('losc lille', 'france', 'lille', 'losc_logo.png'),
-('ogc nice', 'france', 'nice', 'ogcn_logo.png'),
-('rc lens', 'france', 'lens', 'rcl_logo.png');
+('paris saint-germain', 'france', 'paris', 'https://media.api-sports.io/football/teams/85.png'),
+('olympique de marseille', 'france', 'marseille', 'https://media.api-sports.io/football/teams/81.png'),
+('as monaco', 'france', 'monaco', 'https://media.api-sports.io/football/teams/91.png'),
+('losc lille', 'france', 'lille', 'https://media.api-sports.io/football/teams/79.png'),
+('ogc nice', 'france', 'nice', 'https://media.api-sports.io/football/teams/84.png'),
+('rc lens', 'france', 'lens', 'https://media.api-sports.io/football/teams/116.png');
 
 COMMIT; -- ✅ On valide les équipes
 
