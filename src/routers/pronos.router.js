@@ -1,5 +1,5 @@
 import { Router } from "express";
-import predictionController from "../Controllers/prediction.controller.js";
+import predictionController from "../controllers/prediction.controller.js";
 
 const pronosRouter = Router();
 

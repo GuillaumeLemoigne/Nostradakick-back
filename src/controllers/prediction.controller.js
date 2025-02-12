@@ -2,34 +2,38 @@ import { Prediction } from "../models/associations.js";
 import Joi from "joi";
 
 const predictionController = {
-	validate(req, method) {
+	validate(data) {
 		const schema = Joi.object({
-			score_predi_home: Joi.number().integer().min(1).max(2).messages({
+			
+            score_predi_home: Joi.number().integer().min(0).max(99).messages({
 				"number.base": "le score doit être un nombre",
 				"number.integer": "le score doit être un nombre entier",
-				"number.min": "le score doit contenir au moins {#limit} chiffre",
-				"number.max": "le score doit contenir au maximum {#limit} chiffre",
+				"number.min": "le score doit être au minimum {#limit}",
+				"number.max": "le score ne peut pas dépasser {#limit}",
 			}),
 
-			score_predi_away: Joi.number().integer().min(1).max(2).message({
+			score_predi_away: Joi.number().integer().min(0).max(99).messages({
+				"number.base": "le score doit être un nombre",
+				"number.integer": "le score doit être un nombre entier",
+				"number.min": "le score doit être au minimum {#limit}",
+				"number.max": "le score ne peut pas dépasser {#limit}",
+			}),
+			points_score: Joi.number().integer().min(0).max(50).messages({
 				"number.base": "le score doit être un nombre",
 				"number.integer": "le score doit être un nombre entier",
 				"number.min": "le score doit contenir au moins {#limit} chiffre",
 				"number.max": "le score doit contenir au maximum {#limit} chiffre",
 			}),
-			points_score: Joi.number().integer().min(1).max(2).messages({
-				"number.base": "le score doit être un nombre",
-				"number.integer": "le score doit être un nombre entier",
-				"number.min": "le score doit contenir au moins {#limit} chiffre",
-				"number.max": "le score doit contenir au maximum {#limit} chiffre",
-			}),
-			points_outcome: Joi.number().integer().min(1).max(2).messages({
+			points_outcome: Joi.number().integer().min(0).max(10).messages({
 				"number.base": "le score doit être un nombre",
 				"number.integer": "le score doit être un nombre entier",
 				"number.min": "le score doit contenir au moins {#limit} chiffre",
 				"number.max": "le score doit contenir au maximum {#limit} chiffre",
 			}),
 		});
+
+        const { error } = schema.validate(data, { abortEarly: false });
+		return error; 
 	},
 
 	// Méthode pour récupérer tous les pronostics
@@ -81,6 +85,10 @@ const predictionController = {
 
 	createOnePrediction: async (req, res) => {
 		try {
+            const error = predictionController.validate(req.body);
+			if (error) {
+				return res.status(400).json({ message: error.details });
+			}
 			const createPrediction = await Prediction.create(req.body);
 			if (createPrediction) {
 				return res.status(201).json(createPrediction);
@@ -96,14 +104,20 @@ const predictionController = {
 		try {
 			const patchPrediction = await Prediction.findByPk(req.params.id);
 			if (!patchPrediction) {
-				return res.status(404).json({ message: "Vous n'avez rien modifié" });
+				return res.status(404).json({ message: "Cette prédiction n'existe pas" });
 			}
 			const { score_predi_home, score_predi_away } = req.body;
+            const updateData = { score_predi_home, score_predi_away };
+
+			const error = predictionController.validate(updateData);
+			if (error) {
+				return res.status(400).json({ message: error.details });
+			}
 
 			if (!score_predi_away && !score_predi_home) {
 				return res
-					.status(404)
-					.json({ message: "Seuls les scores peuvent être modifiés" });
+					.status(400)
+					.json({ message: "Mauvaise requête" });
 			}
 			if (score_predi_home !== undefined) {
 				patchPrediction.score_predi_home = score_predi_home;
@@ -113,7 +127,7 @@ const predictionController = {
 			}
 			await patchPrediction.save();
 
-			return res.status(200).json(patchPrediction);
+			return res.status(201).json(patchPrediction);
 		} catch (error) {
 			console.log(error.message);
 			return res.status(500).json({ message: "Internal Server Error" });
@@ -129,7 +143,7 @@ const predictionController = {
 				},
 			});
 			if (deletePrediction) {
-				return res.status(200).json(deletePrediction);
+				return res.status(202).json(deletePrediction);
 			}
 			return res.status(404).json({ message: "Prediction not found" });
 		} catch (error) {
