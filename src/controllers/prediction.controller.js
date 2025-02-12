@@ -11,26 +11,26 @@ const predictionController = {
 				"number.max": "le score doit contenir au maximum {#limit} chiffre",
 			}),
 
-//       score_predi_away: Joi.number().integer().min(1).max(2).message({
-//         "number.base": "le score doit être un nombre",
-//         "number.integer": "le score doit être un nombre entier",
-//         "number.min": "le score doit contenir au moins {#limit} chiffre",
-//         "number.max": "le score doit contenir au maximum {#limit} chiffre"
-//       }),
-//       points_score: Joi.number().integer().min(1).max(2).messages({
-//         "number.base": "le score doit être un nombre",
-//         "number.integer": "le score doit être un nombre entier",
-//         "number.min": "le score doit contenir au moins {#limit} chiffre",
-//         "number.max": "le score doit contenir au maximum {#limit} chiffre"
-//       }),
-//       points_outcome: Joi.number().integer().min(1).max(2).messages({
-//         "number.base": "le score doit être un nombre",
-//         "number.integer": "le score doit être un nombre entier",
-//         "number.min": "le score doit contenir au moins {#limit} chiffre",
-//         "number.max": "le score doit contenir au maximum {#limit} chiffre"
-//       }),
-//     });
-//   },
+            score_predi_away: Joi.number().integer().min(1).max(2).message({
+                "number.base": "le score doit être un nombre",
+                "number.integer": "le score doit être un nombre entier",
+                "number.min": "le score doit contenir au moins {#limit} chiffre",
+                "number.max": "le score doit contenir au maximum {#limit} chiffre"
+            }),
+            points_score: Joi.number().integer().min(1).max(2).messages({
+                "number.base": "le score doit être un nombre",
+                "number.integer": "le score doit être un nombre entier",
+                "number.min": "le score doit contenir au moins {#limit} chiffre",
+                "number.max": "le score doit contenir au maximum {#limit} chiffre"
+            }),
+            points_outcome: Joi.number().integer().min(1).max(2).messages({
+                "number.base": "le score doit être un nombre",
+                "number.integer": "le score doit être un nombre entier",
+                "number.min": "le score doit contenir au moins {#limit} chiffre",
+                "number.max": "le score doit contenir au maximum {#limit} chiffre"
+            }),
+    });
+  },
 
 	getOnePrediction: async (req, res) => {
 		try {
