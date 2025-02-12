@@ -143,8 +143,8 @@ VALUES
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'home'),
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis') LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'away');
- */
  
+ COMMIT;
 
 -- ✅ TABLE `own` POUR COMPÉTITIONS ET ÉQUIPES
 BEGIN;

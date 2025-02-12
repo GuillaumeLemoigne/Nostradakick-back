@@ -41,9 +41,10 @@ const predictionController = {
 
         if (onePrediction) {
            return res.status(200).json(onePrediction);
-        } else {
-            res.status(404).json({ message: 'Prediction not found' });
-        }
+        } 
+        
+        res.status(404).json({ message: 'Prediction not found' });
+        
         } catch (error) {
             console.log(error.message);
             return res.status(500).json({ message: 'Internal Server Error' });
@@ -55,9 +56,10 @@ const predictionController = {
             const createPrediction = await Prediction.create(req.body);
             if (createPrediction) {
                 return res.status(201).json(createPrediction);
-            } else {
-                return res.status(404).json({ message: 'Prediction not created' });
             }
+            
+            return res.status(404).json({ message: 'Prediction not created' });
+        
         } catch (error) {
             console.log(error.message);
             return res.status(500).json({ message: 'Internal Server Error' });
@@ -74,7 +76,6 @@ const predictionController = {
             
             if (!score_predi_away && !score_predi_home) {
                return res.status(404).json({ message: 'Seuls les scores peuvent être modifiés' });
-                console.log("coucou remplis moi!");
                 
             }
             if (score_predi_home !== undefined) {
@@ -90,9 +91,7 @@ const predictionController = {
                 console.log(error.message);
                return res.status(500).json({ message: 'Internal Server Error' });
         }
-                
-            
-        
+                 
     },
     
     deleteOnePrediction: async (req, res) => {
@@ -103,11 +102,13 @@ const predictionController = {
                     prediction_id: id,
                 }
             });
+
             if (deletePrediction) {
                 return res.status(200).json(deletePrediction);
-            } else {
-                return res.status(404).json({ message: 'Prediction not found' });
             }
+            
+            return res.status(404).json({ message: 'Prediction not found' });
+        
         } catch (error) {
             console.log(error.message);
             return res.status(500).json({ message: 'Internal Server Error' });
