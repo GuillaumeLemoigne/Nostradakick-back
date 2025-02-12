@@ -1,6 +1,9 @@
 import { Router } from "express";
+import matchController from "../Controllers/match.controller.js";
 
 const matchRouter = Router();
+
+matchRouter.get("/api/matchs", matchController.getAllMatch);
 
 // Les routes de notre API CRUD de gestion des résultats des matchs de football passés
 matchRouter.get("/api/results");
