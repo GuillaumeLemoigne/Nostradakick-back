@@ -119,11 +119,11 @@ VALUES
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'away'),
 
-/* -- Match 2 : AS Monaco vs RC Lens
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis-II') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis-II') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'away'),
+ -- Match 2 : AS Monaco vs RC Lens
+-- ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis-II') LIMIT 1),
+--  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'home'),
+-- ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis-II') LIMIT 1),
+--  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'away')
 
 -- Match 3 : OGC Nice vs LOSC Lille
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Allianz Riviera') LIMIT 1),
@@ -131,20 +131,19 @@ VALUES
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Allianz Riviera') LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('LOSC Lille') LIMIT 1), 'away'),
 
--- Match 4 : PSG vs AS Monaco
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Paris Saint-Germain') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'away'),
+-- -- Match 4 : PSG vs AS Monaco
+-- ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
+--  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Paris Saint-Germain') LIMIT 1), 'home'),
+-- ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
+--  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'away');
 
--- Match 5 : RC Lens vs Olympique de Marseille
+-- -- Match 5 : RC Lens vs Olympique de Marseille
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis') LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'home'),
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis') LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'away');
- */
  
-
+COMMIT;
 -- ✅ TABLE `own` POUR COMPÉTITIONS ET ÉQUIPES
 BEGIN;
 

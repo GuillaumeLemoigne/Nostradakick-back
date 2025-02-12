@@ -1,4 +1,5 @@
 import { Prediction } from "../models/associations.js";
+import Joi from "joi";
 
 const predictionController = {
   // Méthode pour récupérer tous les pronostics
@@ -113,17 +114,6 @@ const predictionController = {
         }
     },
 
-    // getPredictionsPage: async (req, res) => {
-    //     try {
-    //         const predictionsPage = await Prediction.findAll({
-
-    //         });
-    //   console.log(JSON.stringify(allPredictions, null, 2));
-    //  return res.status(200).json(allPredictions);
-    // } catch (error) {
-    //   console.error(error.message);
-    //     }
-    // }
 }
 
 
