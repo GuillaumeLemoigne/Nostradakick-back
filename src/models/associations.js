@@ -2,7 +2,7 @@ import { sequelize } from "../sequelize.js";
 import { Competition } from "./Competition.js";
 import { Team } from "./Team.js";
 import { Match } from "./Match.js";
-import { Player } from "./Player.js";
+import { User } from "./User.js";
 import { Prediction } from "./Prediction.js";
 import { Play } from "./Play.js";
 import { Own } from "./Own.js";
@@ -45,14 +45,14 @@ Match.belongsToMany(Team, {
 	otherKey: "team_id",
 });
 
-Player.hasMany(Prediction, {
+User.hasMany(Prediction, {
 	as: "prediction",
-	foreignKey: "player_id",
+	foreignKey: "user_id",
 });
 
-Prediction.belongsTo(Player, {
-	as: "player",
-	foreignKey: "player_id",
+Prediction.belongsTo(User, {
+	as: "user",
+	foreignKey: "user_id",
 });
 
 Prediction.belongsTo(Match, {
@@ -65,4 +65,4 @@ Match.hasMany(Prediction, {
 	foreignKey: "match_id",
 });
 
-export { Competition, Team, Match, Player, Prediction };
+export { Competition, Team, Match, User, Prediction };

@@ -1,11 +1,11 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../sequelize.js";
 
-class Player extends Model {}
+class User extends Model {}
 
-Player.init(
+User.init(
 	{
-		player_id: {
+		user_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true,
@@ -43,8 +43,8 @@ Player.init(
 	},
 	{
 		sequelize,
-		tableName: "player",
+		tableName: "user",
 	},
 );
 
-export { Player };
+export { User };
