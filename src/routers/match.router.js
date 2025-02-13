@@ -3,15 +3,19 @@ import matchController from "../Controllers/match.controller.js";
 
 const matchRouter = Router();
 
+// Route permettant de récupérer tous les matchs
 matchRouter.get("/api/matchs", matchController.getAllMatch);
 
-// Les routes de notre API CRUD de gestion des résultats des matchs de football passés
-matchRouter.get("/api/results");
+// Route permettant de réucupérer UNIQUEMENT les matchs terminés
+matchRouter.get("/api/results", matchController.getEndedMatch);
 
-// La routes de notre API de consultation du calendrier des matchs à venir dans la compétition
-matchRouter.get("/api/calendar");
+// Route permettant de récupérer UNIQUEMENT les matchs à venir
+matchRouter.get("/api/calendar", matchController.getUpcomingMatch);
 
-// La route de notre API de consultation des informations (principalement le résultat) des matchs de football en cours
+// La route vers l'API externe de consultation des résultats des matchs en cours
 matchRouter.get("/api/inplay");
+
+
+
 
 export { matchRouter };
