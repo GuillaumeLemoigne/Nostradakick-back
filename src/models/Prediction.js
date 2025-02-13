@@ -12,7 +12,7 @@ Prediction.init(
 			primaryKey: true,
 		  },
 		  
-		player_id: {
+		  user_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},

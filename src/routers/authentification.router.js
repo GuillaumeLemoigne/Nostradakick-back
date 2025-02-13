@@ -1,0 +1,10 @@
+import { Router } from "express";
+import authentificationController from "../controllers/authentification.controller.js";
+
+const authentificationRouter = Router();
+
+authentificationRouter.post("/api/signin", authentificationController.handleSigninSubmissionForm);
+
+authentificationRouter.post("/api/signup", authentificationController.handleSignupSubmissionForm);
+
+export {authentificationRouter};

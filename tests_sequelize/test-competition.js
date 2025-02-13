@@ -1,4 +1,4 @@
-import { Competition }  from "../src/models/Competition.js"
+import { Competition }  from "../src/models/associations.js"
 
 
 // * === CRUD DE LA TABLE competition ===
@@ -9,17 +9,17 @@ import { Competition }  from "../src/models/Competition.js"
 async function createCompetition () {
     try {
         const newCompetition = await Competition.create({ 
-            name: "ligue 2",
+            name: "ligue 5",
             season: "2025",
             logo: "waw"
          });
-         console.log(JSON.stringify(createCompetition, null, 2));
+         console.log(JSON.stringify(newCompetition, null, 2));
          
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message);
     }
 };
-// createCompetition();
+createCompetition();
 
 
 // *** READ ***
@@ -33,7 +33,7 @@ async function getAllCompetitions () {
         // JSON.stringify permet de récupérer le résultat
         // au format "string" afin de pouvoir le lire correctement
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // getAllCompetitions();
@@ -52,7 +52,7 @@ async function getOneCompetition () {
         // JSON.stringify permet de récupérer le résultat
         // au format "string" afin de pouvoir le lire correctement
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 // getOneCompetition();
@@ -77,7 +77,7 @@ async function updateCompetition () {
         console.log(JSON.stringify(competitionUpdate, null, 2));
         // On affiche le résultat
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 
@@ -94,15 +94,15 @@ async function deleteCompetition () {
         const competitionDelete = await Competition.destroy(
             {
                 where: {
-                    name: "ligue 3",
+                    name: "ligue 4",
                 },
             }
         );
         // On affiche le résultat
         console.log(JSON.stringify(competitionDelete, null, 2));
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 
-deleteCompetition()
+// deleteCompetition()

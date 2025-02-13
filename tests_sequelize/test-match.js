@@ -1,4 +1,4 @@
-import {Match} from "../src/models/Match.js"
+import {Match} from "../src/models/associations.js"
 
 
 // * === CRUD DE LA TABLE competition ===
@@ -16,10 +16,10 @@ async function createMatch () {
          console.log(JSON.stringify(newMatch, null, 2));
          
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
-// createMatch();
+createMatch();
 
 // *** DELETE ***
 
@@ -37,8 +37,8 @@ async function deleteMatch () {
         // On affiche le résultat
         console.log(JSON.stringify(matchDelete, null, 2));
     } catch (error) {
-        console.error("Ouuuppppps, ya comme un hic!")
+        console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
 
-deleteMatch()
+// deleteMatch()

@@ -2,7 +2,7 @@ import { sequelize } from "../sequelize.js";
 import { Competition } from "./Competition.js";
 import { Team } from "./Team.js";
 import { Match } from "./Match.js";
-import { Player } from "./Player.js";
+import { User } from "./User.js";
 import { Prediction } from "./Prediction.js";
 import { Play } from "./Play.js";
 import { Own } from "./Own.js";
@@ -12,49 +12,52 @@ Competition.hasMany(Match, {
 	foreignKey: "competition_id",
 });
 
-Match.hasOne(Competition, {
+Match.belongsTo(Competition, {
 	as: "competition",
+	foreignKey: "competition_id",
 });
 
 Competition.belongsToMany(Team, {
 	as: "team",
-	through: Own,
+	through: "Own",
 	foreignKey: "competition_id",
 	otherKey: "team_id",
 });
 
 Team.belongsToMany(Competition, {
 	as: "competition",
-	through: Own,
+	through: "Own",
 	foreignKey: "team_id",
 	otherKey: "competition_id",
 });
 
 Team.belongsToMany(Match, {
 	as: "match",
-	through: Play,
-	foreignKey: "match_id",
-	otherKey: "team_id",
-});
-
-Match.belongsToMany(Team, {
-	as: "team",
-	through: Play,
+	through: "Play",
 	foreignKey: "team_id",
 	otherKey: "match_id",
 });
 
-Player.hasMany(Prediction, {
+Match.belongsToMany(Team, {
+	as: "team",
+	through: "Play",
+	foreignKey: "match_id",
+	otherKey: "team_id",
+});
+
+User.hasMany(Prediction, {
 	as: "prediction",
-	foreignKey: "player_id",
+	foreignKey: "user_id",
 });
 
-Prediction.hasOne(Player, {
-	as: "player",
+Prediction.belongsTo(User, {
+	as: "user",
+	foreignKey: "user_id",
 });
 
-Prediction.hasOne(Match, {
+Prediction.belongsTo(Match, {
 	as: "match",
+	foreignKey: "match_id",
 });
 
 Match.hasMany(Prediction, {
@@ -62,4 +65,4 @@ Match.hasMany(Prediction, {
 	foreignKey: "match_id",
 });
 
-export { Competition, Team, Match, Player, Prediction };
+export { Competition, Team, Match, User, Prediction };
