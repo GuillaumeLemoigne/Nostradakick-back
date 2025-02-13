@@ -1,4 +1,4 @@
-import { Match } from "../models/Match.js";
+import { Match } from "../models/associations.js";
 
 const matchController = {
 	getAllMatch: async (req, res) => {
