@@ -20,7 +20,7 @@ async function createPrediction() {
     console.error("Ouuuppppps, ya comme un hic!", error.message);
   }
 }
-createPrediction();
+// createPrediction();
 
 // *** DELETE ***
 
