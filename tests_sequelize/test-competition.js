@@ -13,7 +13,7 @@ async function createCompetition () {
             season: "2025",
             logo: "waw"
          });
-         console.log(json.stringify(createCompetition, null, 2));
+         console.log(JSON.stringify(createCompetition, null, 2));
          
     } catch (error) {
         console.error("Ouuuppppps, ya comme un hic!")
