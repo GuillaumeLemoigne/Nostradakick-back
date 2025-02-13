@@ -1,41 +1,46 @@
-import emailValidator from 'email-validator';
-import PasswordValidator from 'password-validator';
-import { User } from '../models/associations.js';
+import {User} from "../models/associations.js";
 import argon2 from 'argon2';
-
-const schema = new PasswordValidator();
-
-schema
-    .is().min(8) // Doit faire minimum 8 caractères
-    .is().max(64) // Doit faire 64 caractères maximum
-    .has().uppercase() // Doit contenir au moins une majuscule
-    .has().lowercase() // Doit contenir au moins une minuscule
-    .has().digits(1) // Doit contenir au moins un chiffre
-    .has().symbols(1); // Doit contenir au moins un symbole
-
-    // Test de valiation:
-    console.log(schema.validate('validPASS123!'));
-
+import jwt from "jsonwebtoken";
 
 const authentificationController = {
-    handleSignupSubmissionForm: async (req, res) => {
-        try {
 
-            res.redirect("/signin");
-        } catch {
+	handleSignin: async (req, res, next) => {
+	  res.json({ message: "Route atteinte" });
+	  console.log("tote");
+	  
+	  try {
+		const {email, password} = req.body;
+		console.log(req.body);
+		
+		const findUser = await User.findOne({
+		  where: {email},
+		});
+  
+		console.log(findUser);
+		
+  
+		if (!findUser) {
+		  return next();
+		}
+  
+		const checkPassword = await argon2.verify(
+		  findUser.password,
+		  password
+		);
 
-        }
-    },
+		if (!checkPassword){
+			return next();
+		}
 
-    handleSigninSubmissionForm: async (req, res) => {
-        try {
-
-            res.redirect("/api/predicition");
-
-        } catch {
-
-        }
-    }
-};
-
-export default authentificationController;
+		
+		console.log(checkPassword);
+		
+  
+	
+	  } catch (error){
+		console.log(error);
+	  }
+	},
+  }
+  
+  export default authentificationController;
