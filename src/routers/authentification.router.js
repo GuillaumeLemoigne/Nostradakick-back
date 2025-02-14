@@ -3,8 +3,14 @@ import authentificationController from "../controllers/authentification.controll
 
 const authentificationRouter = Router();
 
-authentificationRouter.post("/api/signin", authentificationController.handleSigninSubmissionForm);
+authentificationRouter.get(
+	"/api/login",
+	authentificationController.handleLogin,
+);
 
-authentificationRouter.post("/api/signup", authentificationController.handleSignupSubmissionForm);
+authentificationRouter.post("/test-post", (req, res) => {
+	console.log("Request body:", req.body);
+	res.json({ message: "POST request received", data: req.body });
+});
 
-export {authentificationRouter};
+export { authentificationRouter };

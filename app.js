@@ -7,15 +7,20 @@ import { userRouter } from "./src/routers/user.router.js";
 import {authentificationRouter} from "./src/routers/authentification.router.js";
 import expressSanitizer from "express-sanitizer";
 import cors from "cors";
+import { errorHandler, notFound } from "./src/Middlewares/error.middleware.js";
 
 
 const app = express();
 
 app.use(express.json());
+
 app.use(expressSanitizer());
 app.use(cors());
 
 app.use(matchRouter, predictionRouter, userRouter, authentificationRouter);
+
+app.use(notFound, errorHandler);
+
 
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on ${process.env.BASE_URL}:${process.env.PORT}`);

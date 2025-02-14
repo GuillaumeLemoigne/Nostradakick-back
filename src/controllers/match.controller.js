@@ -4,7 +4,7 @@ import { Match } from "../models/associations.js";
 const currentDate = new Date();
 
 const matchController = {
-	getAllMatch: async (req, res) => {
+	getAllMatch: async (req, res, next) => {
 		try {
 			const response = await Match.findAll({
 				include: [
@@ -18,19 +18,24 @@ const matchController = {
 			});
 			console.log(JSON.stringify(response, null, 2));
 
+			if (!response) {
+				return next();
+			}
+
 			return res.status(200).json(response);
 		} catch (error) {
-			console.error(error);
+			error.status = 500;
+			return next(error);
 		}
 	},
 
-	getEndedMatch: async (req, res) => {
+	getEndedMatch: async (req, res, next) => {
 		try {
 			const response = await Match.findAll({
 				where: {
 					date: {
 						[Op.lt]: currentDate,
-					}
+					},
 				},
 				include: [
 					{
@@ -43,19 +48,24 @@ const matchController = {
 			});
 			console.log(JSON.stringify(response, null, 2));
 
+			if (!response) {
+				return next();
+			}
+
 			return res.status(200).json(response);
 		} catch (error) {
-			console.error(error);
+			error.status = 500;
+			return next(error);
 		}
 	},
 
-	getUpcomingMatch: async (req, res) => {
+	getUpcomingMatch: async (req, res, next) => {
 		try {
 			const response = await Match.findAll({
 				where: {
 					date: {
 						[Op.gt]: currentDate,
-					}
+					},
 				},
 				include: [
 					{
@@ -68,9 +78,14 @@ const matchController = {
 			});
 			console.log(JSON.stringify(response, null, 2));
 
+			if (!response) {
+				return next();
+			}
+
 			return res.status(200).json(response);
 		} catch (error) {
-			console.error(error);
+			error.status = 500;
+			return next(error);
 		}
 	},
 };

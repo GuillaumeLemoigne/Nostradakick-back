@@ -8,8 +8,6 @@ import { Prediction } from "../src/models/associations.js";
 async function createPrediction() {
   try {
     const newPrediction = await Prediction.create({
-      user_id: "2",
-      match_id: "1",
       score_predi_home: "1",
       score_predi_away: "0",
       points_score: "3",
@@ -17,7 +15,8 @@ async function createPrediction() {
     });
     console.log(JSON.stringify(newPrediction, null, 2));
   } catch (error) {
-    console.error("Ouuuppppps, ya comme un hic!", error.message);
+    error.status = 500;
+    return next(error)
   }
 }
 createPrediction();

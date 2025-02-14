@@ -4,8 +4,7 @@ import Joi from "joi";
 const predictionController = {
 	validate(data) {
 		const schema = Joi.object({
-			
-            score_predi_home: Joi.number().integer().min(0).max(99).messages({
+			score_predi_home: Joi.number().integer().min(0).max(99).messages({
 				"number.base": "le score doit être un nombre",
 				"number.integer": "le score doit être un nombre entier",
 				"number.min": "le score doit être au minimum {#limit}",
@@ -30,10 +29,18 @@ const predictionController = {
 				"number.min": "le score doit contenir au moins {#limit} chiffre",
 				"number.max": "le score doit contenir au maximum {#limit} chiffre",
 			}),
+			user_id: Joi.number().integer().required().messages({
+				"number.base": "user_id doit être un nombre",
+				"any.required": "user_id est requis",
+			}),
+			match_id: Joi.number().integer().required().messages({
+				"number.base": "match_id doit être un nombre",
+				"any.required": "match_id est requis",
+			}),
 		});
 
-        const { error } = schema.validate(data, { abortEarly: false });
-		return error; 
+		const { error } = schema.validate(data, { abortEarly: false });
+		return error;
 	},
 
 	// Méthode pour récupérer tous les pronostics
@@ -57,14 +64,15 @@ const predictionController = {
 					},
 				],
 			});
-			console.log(JSON.stringify(allPredictions, null, 2));
+
 			return res.status(200).json(allPredictions);
 		} catch (error) {
-			console.error(error.message);
+			error.status = 500;
+			return next(error);
 		}
 	},
 
-	getOnePrediction: async (req, res) => {
+	getOnePrediction: async (req, res, next) => {
 		try {
 			const { id } = req.params; //
 			const onePrediction = await Prediction.findOne({
@@ -73,51 +81,49 @@ const predictionController = {
 				},
 			});
 
-			if (onePrediction) {
-				return res.status(200).json(onePrediction);
+			if (!onePrediction) {
+				return next();
 			}
-			res.status(404).json({ message: "Prediction not found" });
+			return res.status(200).json(onePrediction);
 		} catch (error) {
-			console.log(error.message);
-			return res.status(500).json({ message: "Internal Server Error" });
+			error.status = 500;
+			return next(error);
 		}
 	},
 
-	createOnePrediction: async (req, res) => {
+	createOnePrediction: async (req, res, next) => {
 		try {
-            const error = predictionController.validate(req.body);
+			const error = predictionController.validate(req.body);
 			if (error) {
-				return res.status(400).json({ message: error.details });
+				return next(error);
 			}
 			const createPrediction = await Prediction.create(req.body);
-			if (createPrediction) {
-				return res.status(201).json(createPrediction);
+			if (!createPrediction) {
+				return next();
 			}
-			return res.status(404).json({ message: "Prediction not created" });
+			return res.status(201).json(createPrediction);
 		} catch (error) {
-			console.log(error.message);
-			return res.status(500).json({ message: "Internal Server Error" });
+			error.status = 500;
+			return next(error);
 		}
 	},
 
-	patchOnePrediction: async (req, res) => {
+	patchOnePrediction: async (req, res, next) => {
 		try {
 			const patchPrediction = await Prediction.findByPk(req.params.id);
 			if (!patchPrediction) {
-				return res.status(404).json({ message: "Cette prédiction n'existe pas" });
+				return next();
 			}
 			const { score_predi_home, score_predi_away } = req.body;
-            const updateData = { score_predi_home, score_predi_away };
+			const updateData = { score_predi_home, score_predi_away };
 
 			const error = predictionController.validate(updateData);
 			if (error) {
-				return res.status(400).json({ message: error.details });
+				return next(error);
 			}
 
 			if (!score_predi_away && !score_predi_home) {
-				return res
-					.status(400)
-					.json({ message: "Mauvaise requête" });
+				return next();
 			}
 			if (score_predi_home !== undefined) {
 				patchPrediction.score_predi_home = score_predi_home;
@@ -129,12 +135,12 @@ const predictionController = {
 
 			return res.status(201).json(patchPrediction);
 		} catch (error) {
-			console.log(error.message);
-			return res.status(500).json({ message: "Internal Server Error" });
+			error.status = 500;
+			return next(error);
 		}
 	},
 
-	deleteOnePrediction: async (req, res) => {
+	deleteOnePrediction: async (req, res, next) => {
 		try {
 			const { id } = req.params;
 			const deletePrediction = await Prediction.destroy({
@@ -142,13 +148,13 @@ const predictionController = {
 					prediction_id: id,
 				},
 			});
-			if (deletePrediction) {
-				return res.status(202).json(deletePrediction);
+			if (!deletePrediction) {
+				return next();
 			}
-			return res.status(404).json({ message: "Prediction not found" });
+			return res.status(202).json(deletePrediction);
 		} catch (error) {
-			console.log(error.message);
-			return res.status(500).json({ message: "Internal Server Error" });
+			error.status = 500;
+			return next(error);
 		}
 	},
 };
