@@ -3,10 +3,9 @@ import authentificationController from "../controllers/authentification.controll
 
 const authentificationRouter = Router();
 
-
 authentificationRouter.post("/api/signin", authentificationController.handleSignin);
 
 
-//authentificationRouter.post("/api/signup",authentificationController.handleSignupSubmissionForm);
+//authentificationRouter.post("/api/signup",authentificationController.);
 
 export {authentificationRouter};

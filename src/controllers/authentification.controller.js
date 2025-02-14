@@ -1,26 +1,39 @@
-import {User} from "../models/associations.js";
-import argon2 from 'argon2';
+import { User } from "../models/associations.js";
+import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 
 const authentificationController = {
-    handleSignupSubmissionForm: async (req, res) => {
-        try {
+  handleSignin: async (req, res, next) => {
+    res.json({ message: "Route atteinte" });
+    console.log("tote");
 
-            res.redirect("/signin");
-        } catch {
+    try {
+      const { email, password } = req.body;
+      console.log(req.body);
 
-        }
-    },
+      const findUser = await User.findOne({
+        where: { email },
+      });
 
-    handleSignin: async (req, res) => {
-        try {
+      console.log(findUser);
 
-            res.redirect("/api/predicition");
+      if (!findUser) {
+        return next();
+      }
 
-        } catch {
+      const checkPassword = await argon2.verify(findUser.password, password);
 
-        }
+      if (!checkPassword) {
+        return next();
+      }
+
+      console.log(checkPassword);
+    } catch (error) {
+      console.log(error);
     }
+  },
+
+  
 };
 
 export default authentificationController;

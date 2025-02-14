@@ -66,8 +66,11 @@ const predictionController = {
 			});
 			console.log(JSON.stringify(allPredictions, null, 2));
 			return res.status(200).json(allPredictions);
+			
 		} catch (error) {
 			console.error(error.message);
+			
+			
 		}
 	},
 

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import matchController from "../controllers/match.controller.js";
+import { authHandler } from "../Middlewares/auth.jwt.js";
 
 const matchRouter = Router();
 

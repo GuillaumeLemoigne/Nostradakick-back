@@ -1,5 +1,6 @@
 import { User } from "../models/associations.js";
 import Joi from "joi";
+import argon2 from "argon2";
 
 const userController = {
 
@@ -50,8 +51,12 @@ const userController = {
             if (error) {
                 return res.status(400).json({ message: error.details });
             }
-            const createUser = await User.create(req.body);
+            
+            const hashedPassword = await argon2.hash(req.body.password);
+
+            const createUser = await User.create({...req.body, password: hashedPassword});
             if (createUser) {
+                res.redirect("/signin");
                 return res.status(201).json(createUser);
             }
             return res.status(404).json({ message: "User not created" });
@@ -86,7 +91,8 @@ const userController = {
                 patchUser.email = email;
             }
             if (password !== undefined) {
-                patchUser.password = password;
+                const hashedPassword = await argon2.hash(password);
+                patchUser.password = hashedPassword;
             }
             await patchUser.save()
 
@@ -128,7 +134,7 @@ const userController = {
                 "string.min": "Le nom doit contenir au minimum 2 lettres",
                 "string.max": "Le nom doit contenir au maximum 150 lettres",
             }),
-            pseudo: Joi.string().alphanum().min(2).max(150).required().messages({
+            pseudo: Joi.string().min(2).max(150).required().messages({
                 "string.base": "Le pseudo doit être une chaîne de caractères",
                 "string.min": "Le pseudo doit contenir au minimum 2 lettres",
                 "string.max": "Le pseudo doit contenir au maximum 150 lettres",
@@ -157,7 +163,7 @@ const userController = {
 
         });
 
-        const { error } = schema.validate(data, { abortEarly: false });
+        const { error } = validationSchema.validate(data, { abortEarly: false });
         return error;
     },
 };
