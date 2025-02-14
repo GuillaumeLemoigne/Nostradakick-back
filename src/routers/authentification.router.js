@@ -3,10 +3,10 @@ import authentificationController from "../controllers/authentification.controll
 
 const authentificationRouter = Router();
 
-console.log("totu");
+
 authentificationRouter.post("/api/signin", authentificationController.handleSignin);
 
 
-// authentificationRouter.post("/api/signup",authentificationController.handleSignupSubmissionForm);
+//authentificationRouter.post("/api/signup",authentificationController.handleSignupSubmissionForm);
 
 export {authentificationRouter};

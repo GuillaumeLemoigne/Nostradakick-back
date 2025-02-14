@@ -12,7 +12,7 @@ const authentificationController = {
         }
     },
 
-    handleSigninSubmissionForm: async (req, res) => {
+    handleSignin: async (req, res) => {
         try {
 
             res.redirect("/api/predicition");
