@@ -33,7 +33,7 @@ const authentificationController = {
             res.redirect("/api/predicition");
 
         } catch {
-
+            
         }
     }
 };
