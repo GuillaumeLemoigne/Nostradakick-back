@@ -21,7 +21,7 @@ async function createUser () {
         console.error("Ouuuppppps, ya comme un hic!",error.message)
     }
 };
-createUser();
+// createUser();
 
 // *** DELETE ***
 
