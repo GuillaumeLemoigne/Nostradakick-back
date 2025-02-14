@@ -6,6 +6,7 @@ const currentDate = new Date();
 const matchController = {
 	getAllMatch: async (req, res, next) => {
 		try {
+			// Récupération de tous les matchs
 			const response = await Match.findAll({
 				include: [
 					{
@@ -16,12 +17,12 @@ const matchController = {
 					},
 				],
 			});
-			console.log(JSON.stringify(response, null, 2));
 
+			// Vérification de la réponse
 			if (!response) {
 				return next();
 			}
-
+			// Renvoi de la réponse au client
 			return res.status(200).json(response);
 		} catch (error) {
 			error.status = 500;
@@ -31,6 +32,7 @@ const matchController = {
 
 	getEndedMatch: async (req, res, next) => {
 		try {
+			// Récupération des matchs qui ont déjà eu lieu
 			const response = await Match.findAll({
 				where: {
 					date: {
@@ -46,12 +48,12 @@ const matchController = {
 					},
 				],
 			});
-			console.log(JSON.stringify(response, null, 2));
 
+			// Vérification de la réponse
 			if (!response) {
 				return next();
 			}
-
+			// Renvoi de la réponse au client
 			return res.status(200).json(response);
 		} catch (error) {
 			error.status = 500;
@@ -61,6 +63,7 @@ const matchController = {
 
 	getUpcomingMatch: async (req, res, next) => {
 		try {
+			// Récupération des matchs qui n'ont pas encore eu lieu
 			const response = await Match.findAll({
 				where: {
 					date: {
@@ -76,12 +79,13 @@ const matchController = {
 					},
 				],
 			});
-			console.log(JSON.stringify(response, null, 2));
 
+			// Vérification de la réponse
 			if (!response) {
 				return next();
 			}
 
+			// Renvoi de la réponse au client
 			return res.status(200).json(response);
 		} catch (error) {
 			error.status = 500;

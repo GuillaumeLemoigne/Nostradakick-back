@@ -18,7 +18,7 @@ async function createTeam() {
     console.error("Ouuuppppps, ya comme un hic!", error.message);
   }
 }
-createTeam();
+// createTeam();
 
 // *** DELETE ***
 

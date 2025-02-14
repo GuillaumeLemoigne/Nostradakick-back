@@ -19,7 +19,7 @@ async function createPrediction() {
     return next(error)
   }
 }
-createPrediction();
+// createPrediction();
 
 // *** DELETE ***
 
