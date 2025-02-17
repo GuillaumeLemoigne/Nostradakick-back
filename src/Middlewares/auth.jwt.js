@@ -1,15 +1,19 @@
 import jwt from "jsonwebtoken";
 
 const authHandler = (req, res, next) => {
-	// Récupérer le token depuis le cookie
-	const token = req.cookies.jwt;
+	// Récupérer le token
+	const authHeader = req.headers.authorization;
+	
 
 	// Vérif de l'existance du token
-	if (!token) {
+	if (!authHeader) {
 		const error = new Error("Token manquant");
 		error.status = 401;
 		return next(error);
 	}
+
+	// Extraire le token après "Bearer"
+	const token = authHeader.split(" ")[1]; 
 
 	// Vérif du token
 	try {

@@ -14,8 +14,10 @@ const userController = {
 				],
 			});
 
+			// Vérification de l'existence des données
 			if (!allUsers) return next();
 
+			// Retour de la réponse avec les données
 			return res.status(200).json(allUsers);
 		} catch (error) {
 			error.status = 500;
@@ -25,7 +27,7 @@ const userController = {
 
 	getTheUser: async (req, res, next) => {
 		try {
-			//
+			// Récupération de l'ID
 			const { id } = req.params;
 			// Récupération du User avec les prédictions
 			const user = await User.findOne({
@@ -39,10 +41,10 @@ const userController = {
 				],
 			});
 
-			if (!user) {
-				return next();
-			}
+			// Vérification de l'existance du user
+			if (!user) return next();
 
+			// Retour de la réponse avec le user
 			return res.status(200).json(theUser);
 		} catch (error) {
 			error.status = 500;
@@ -54,8 +56,11 @@ const userController = {
 		try {
 			//* Validation des inputs avec JOI *//
 			const error = userController.validate(req.body);
+			// Gestion de l'erreur JOI
 			if (error) {
-				return res.status(400).json({ message: error.details });
+				const erreur = new Error(error.details);
+				erreur.status = 400;
+				return next(erreur);
 			}
 
 			// Hash mot de passe
@@ -63,12 +68,14 @@ const userController = {
 
 			// Création du User
 			const createUser = await User.create({
-				...req.body,
+				...req.body, // Le reste de l'objet req.body
 				password: hashedPassword,
 			});
-			if (!createUser) {
-				return next();
-			}
+
+			// Vrification de l'existance du nouveau user
+			if (!createUser) return next();
+
+			// Retour de la réponse avec le nouveau user
 			res.status(201).json(createUser);
 		} catch (error) {
 			error.status = 500;
@@ -79,34 +86,47 @@ const userController = {
 	patchOneUser: async (req, res, next) => {
 		try {
 			// Récupération du User a modifier
-			const patchUser = await User.findByPk(11);
+			const patchUser = await User.findByPk(req.user.user_id);
 			if (!patchUser) {
-				return res.status(404).json({ message: "This User doesn't exist" });
+				return next();
 			}
 			// Déstructuration de req.body
 			const { first_name, last_name, pseudo, email, password } = req.body;
 
 			// Validation JOI
 			const error = userController.validate(req.body);
+			// Gestion erreur JOI
 			if (error) {
-				return res.status(400).json({ message: error.details });
+				const erreur = new Error(error.details);
+				erreur.status = 400;
+				return next(erreur);
 			}
 
+			// Vérification si il y a au moins un champ a modifié
 			if (!first_name && !last_name && !pseudo && !email && !password) {
-				return res.status(400).json({ message: "Bad request" });
+				const erreur = new Error("Bad request");
+				erreur.status = 400;
+				return next(erreur);
 			}
+
+			// Modification du pseudo
 			if (pseudo !== undefined) {
 				patchUser.pseudo = pseudo;
 			}
+			// Modification du email
 			if (email !== undefined) {
 				patchUser.email = email;
 			}
+			// Modification du password
 			if (password !== undefined) {
 				const hashedPassword = await argon2.hash(password);
 				patchUser.password = hashedPassword;
 			}
+
+			// Enregistrement dans la BDD
 			await patchUser.save();
 
+			// Retour de la réponse avec la modification du User
 			return res.status(201).json(patchUser);
 		} catch (error) {
 			error.status = 500;
@@ -119,13 +139,14 @@ const userController = {
 			const { id } = req.params;
 			const deleteUser = await User.destroy({
 				where: {
-					user_id: id,
+					user_id: req.user.user_id,
 				},
 			});
-			if (deleteUser) {
-				return res.status(202).json(deleteUser);
-			}
-			return res.status(404).json({ message: "User not found" });
+
+			// Retour de la réponse et d'un message pour confirmer la suppression
+			return res
+				.status(202)
+				.json({ message: "L'utilisateur a bien été supprimer !" });
 		} catch (error) {
 			error.status = 500;
 			return next(error);
@@ -165,25 +186,17 @@ const userController = {
 				.message("Le mot de passe doit contenir au moins 8 caractères.")
 				.max(32)
 				.message("Le mot de passe ne doit pas dépasser 32 caractères.")
-				.pattern(new RegExp("(?=.*[A-Z])"))
+				.pattern(new RegExp("(?=.*[A-Z])")) // Au moins une minuscule (?=.*[a-z])
 				.message("Le mot de passe doit contenir au moins une majuscule.")
-				.pattern(new RegExp("(?=.*[a-z])"))
+				.pattern(new RegExp("(?=.*[a-z])")) // Au moins une majuscule (?=.*[A-Z])
 				.message("Le mot de passe doit contenir au moins une minuscule.")
-				.pattern(new RegExp("(?=.*\\d)"))
+				.pattern(new RegExp("(?=.*\\d)")) // Au moins un chiffre (?=.*\\d)
 				.message("Le mot de passe doit contenir au moins un chiffre.")
-				.pattern(new RegExp("(?=.*[@$!%*?&])"))
+				.pattern(new RegExp("(?=.*[@$!%*?&])")) // Au moins un caractère spécial (?=.*[@#$%^&*()!+=_-])
 				.message(
 					"Le mot de passe doit contenir au moins un caractère spécial (@$!%*?&).",
 				)
 				.required(),
-
-			/* 
-                Au moins une minuscule (?=.*[a-z])
-                Au moins une majuscule (?=.*[A-Z])
-                Au moins un chiffre (?=.*\\d)
-                Au moins un caractère spécial (?=.*[@#$%^&*()!+=_-])
-                Longueur de 8 à 30 caractères ({8,30}) 
-                */
 		});
 
 		const { error } = validationSchema.validate(data, { abortEarly: false });
