@@ -44,7 +44,8 @@ const authentificationController = {
 			// Ajouter le token dans les cookies de la réponse
 			res.cookie("jwt", token, {
 				httpOnly: true, // (protection XSS)
-				secure: false, // envoyé via HTTPS
+				secure: true, // envoyé via HTTPS
+				sameSite: "None",
 				maxAge: 3600000, // Durée de vie du cookie en millisecondes
 			});
 
