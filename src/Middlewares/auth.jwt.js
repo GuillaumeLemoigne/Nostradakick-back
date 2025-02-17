@@ -5,6 +5,9 @@ const authHandler = (req, res, next) => {
 	const authHeader = req.headers.authorization;
 	
 
+	console.log(token);
+	
+
 	// Vérif de l'existance du token
 	if (!authHeader) {
 		const error = new Error("Token manquant");
