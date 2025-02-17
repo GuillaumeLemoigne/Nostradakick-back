@@ -13,7 +13,7 @@ authentificationRouter.post(
 authentificationRouter.get("/api/auth/check", (req, res) => {
 	console.log(
 		"je suis dans la route de test et voici les données : ",
-		req.cookies,
+		req.cookies.jwt,
 	);
 
 	const token = req.cookies.jwt; // Récupérer le JWT depuis les cookies

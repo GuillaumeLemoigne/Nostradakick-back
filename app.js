@@ -15,6 +15,7 @@ const app = express();
 
 // Middleware pour lire les json
 app.use(express.json());
+
 // Middleware pour lire les cookies
 app.use(cookieParser());
 
