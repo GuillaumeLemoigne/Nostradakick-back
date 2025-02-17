@@ -41,16 +41,10 @@ const authentificationController = {
 			// Création du token JWT
 			const token = jwt.sign(payload, process.env.JWT_SECRET, options);
 
-			// Ajouter le token dans les cookies de la réponse
-			res.cookie("jwt", token, {
-				httpOnly: true, // (protection XSS)
-				secure: true, // envoyé via HTTPS
-				sameSite: "None",
-				maxAge: 3600000, // Durée de vie du cookie en millisecondes
-			});
-
 			// Message renvoyé
-			return res.json({ message: "Authentifié avec succès" });
+			return res
+				.status(201)
+				.json({ message: "Authentifié avec succès", token: token });
 		} catch (error) {
 			console.log(error);
 		}

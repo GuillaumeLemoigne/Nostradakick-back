@@ -9,31 +9,28 @@ import { authentificationRouter } from "./src/routers/authentification.router.js
 import expressSanitizer from "express-sanitizer";
 import cors from "cors";
 import { notFound, errorHandler } from "./src/Middlewares/error.middleware.js";
-import cookieParser from "cookie-parser";
 
 const app = express();
 
 // Middleware pour lire les json
 app.use(express.json());
 
-// Middleware pour lire les cookies
-app.use(cookieParser());
-
 app.use(expressSanitizer());
+
+// Autorisation CORS
 app.use(
 	cors({
-		origin: "http://localhost:5173", // Remplace par l'URL de ton frontend
-		credentials: true, // Autorise l'envoi des cookies
+		origin: "http://localhost:5173", // URL frontend
 	}),
 );
 
+// Route
 app.use(matchRouter);
 app.use(predictionRouter);
 app.use(userRouter);
 app.use(authentificationRouter);
 
-app.use(notFound, errorHandler);
-
+// Route erreur
 app.use(notFound, errorHandler);
 
 app.listen(process.env.PORT, () => {

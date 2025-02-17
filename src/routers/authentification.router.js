@@ -11,21 +11,23 @@ authentificationRouter.post(
 
 // Route pour check l'authentification
 authentificationRouter.get("/api/auth/check", (req, res) => {
-	console.log(
-		"je suis dans la route de test et voici les données : ",
-		req.cookies.jwt,
-	);
+	// Récupérer le JWT depuis les Headers
+	const authHeader = req.headers.authorization;
 
-	const token = req.cookies.jwt; // Récupérer le JWT depuis les cookies
-
-	if (!token) {
+	// Vérification de l'existance du token
+	if (!authHeader) {
 		return res
 			.status(401)
 			.json({ authenticated: false, message: "Token manquant" });
 	}
 
+	// Extraire le token après "Bearer"
+	const token = authHeader.split(" ")[1];
+
 	try {
-		const decoded = jwt.verify(token, process.env.JWT_SECRET); // Vérifier le JWT
+		// Vérifier le JWT
+		const decoded = jwt.verify(token, process.env.JWT_SECRET);
+		// Réponse avec le user et le authenticated
 		return res.status(200).json({ authenticated: true, user: decoded });
 	} catch (err) {
 		return res
