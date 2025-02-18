@@ -40,10 +40,6 @@ const predictionController = {
 				"number.min": "le score doit contenir au moins {#limit} chiffre",
 				"number.max": "le score doit contenir au maximum {#limit} chiffre",
 			}),
-			user_id: Joi.number().integer().required().messages({
-				"number.base": "user_id doit être un nombre",
-				"any.required": "user_id est requis",
-			}),
 			match_id: Joi.number().integer().required().messages({
 				"number.base": "match_id doit être un nombre",
 				"any.required": "match_id est requis",
@@ -116,14 +112,22 @@ const predictionController = {
 
 	createOnePrediction: async (req, res, next) => {
 		try {
+
 			// Validation des inputs avec JOI
 			const error = predictionController.validate(req.body);
+
 			// Vérification si erreur JOI
 			if (error) {
 				return next(error);
 			}
+
+			const predict = {
+				user_id: req.user.user_id,
+				...req.body,
+			};
+
 			// Création d'une prédiction
-			const createPrediction = await Prediction.create(req.body);
+			const createPrediction = await Prediction.create(predict);
 
 			// Vérification que la prédiction ai bien été crée
 			if (!createPrediction) {
@@ -141,15 +145,18 @@ const predictionController = {
 		try {
 			// Récupération de la prédiction a modifier
 			const patchPrediction = await Prediction.findByPk(req.params.id);
+
 			// Vérification de la prédiction
 			if (!patchPrediction) {
 				return next();
 			}
+
 			// Destructuration de req.body
 			const { score_predi_home, score_predi_away } = req.body;
 
 			// Validation des inputs dans JOI
 			const error = predictionController.validate(req.body);
+
 			// Vérification si erreur JOI
 			if (error) {
 				return next(error);
@@ -184,7 +191,6 @@ const predictionController = {
 	},
 
 	deleteOnePrediction: async (req, res, next) => {
-		console.log(req.user.user_id);
 		try {
 			// Récupération de l'id dans la request
 			const { id } = req.params;

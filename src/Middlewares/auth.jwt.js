@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 const authHandler = (req, res, next) => {
 	// Récupérer le token
 	const authHeader = req.headers.authorization;
-	
 
 	// Vérif de l'existance du token
 	if (!authHeader) {
@@ -13,7 +12,7 @@ const authHandler = (req, res, next) => {
 	}
 
 	// Extraire le token après "Bearer"
-	const token = authHeader.split(" ")[1]; 
+	const token = authHeader.split(" ")[1];
 
 	// Vérif du token
 	try {
