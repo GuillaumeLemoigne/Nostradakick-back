@@ -116,6 +116,8 @@ const predictionController = {
 
 	createOnePrediction: async (req, res, next) => {
 		try {
+			console.log("reception de la data",req.body);
+			
 			// Validation des inputs avec JOI
 			const error = predictionController.validate(req.body);
 			// Vérification si erreur JOI

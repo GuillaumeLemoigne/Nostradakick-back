@@ -42,12 +42,13 @@ const userController = {
 					},
 				],
 			});
+			console.log('etape4', user.toJSON());
 
 			// Vérification de l'existance du user
 			if (!user) return next();
 
 			// Retour de la réponse avec le user
-			return res.status(200).json(theUser);
+			return res.status(200).json(user);
 		} catch (error) {
 			error.status = 500;
 			return next(error);
@@ -136,19 +137,17 @@ const userController = {
 		}
 	},
 
-	deleteOneUser: async (req, res) => {
+	deleteOneUser: async (req, res, next) => {
 		try {
-			const { id } = req.params;
 			const deleteUser = await User.destroy({
 				where: {
 					user_id: req.user.user_id,
 				},
 			});
-
-			// Retour de la réponse et d'un message pour confirmer la suppression
-			return res
-				.status(202)
-				.json({ message: "L'utilisateur a bien été supprimer !" });
+	
+			return res.status(202).json({ 
+				message: "L'utilisateur a bien été supprimé !" 
+			});
 		} catch (error) {
 			error.status = 500;
 			return next(error);

@@ -4,6 +4,8 @@ const authHandler = (req, res, next) => {
     // Récupérer le token
     const authHeader = req.headers.authorization;
 
+	console.log(`etape1:${authHeader}`);
+
     // Vérification de l'existence du token
     if (!authHeader) {
         const error = new Error("Token manquant");
@@ -13,11 +15,14 @@ const authHandler = (req, res, next) => {
 
     // Extraire le token après "Bearer"
     const token = authHeader.split(" ")[1];
+	console.log(`etape2:${token}`);
 
     // Vérification du token
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
+		console.log(`etape3:${JSON.stringify(req.user, null, 2)}`);
+		
         next();
     } catch (error) {
         error.message = "Token invalide";

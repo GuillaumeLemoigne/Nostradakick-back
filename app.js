@@ -20,7 +20,7 @@ app.use(expressSanitizer());
 // Autorisation CORS
 app.use(
 	cors({
-		origin: "http://localhost:5173", // URL frontend
+		// origin: "http://localhost:5173", // URL frontend
 	}),
 );
 
