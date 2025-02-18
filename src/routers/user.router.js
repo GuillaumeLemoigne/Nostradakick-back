@@ -6,7 +6,7 @@ const userRouter = Router();
 
 // Les routes de notre API CRUD de gestion des utilisateurs
 userRouter.get("/api/users", userController.getAllUsers);
-userRouter.get("/api/users/:id", userController.getTheUser);
+userRouter.get("/api/users/profil", authHandler, userController.getTheUser);
 userRouter.post("/api/users", userController.createOneUser);
 userRouter.patch("/api/users/patch", authHandler, userController.patchOneUser);
 userRouter.delete("/api/users/:id", authHandler, userController.deleteOneUser);

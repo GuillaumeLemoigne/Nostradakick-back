@@ -7,8 +7,9 @@ const userController = {
 		try {
 			// Récupération de tous les Users avec les prédictions
 			const allUsers = await User.findAll({
+				attributes: ["pseudo", "picture"],
 				include: [
-					{
+					{ 
 						association: "prediction",
 					},
 				],
@@ -32,7 +33,7 @@ const userController = {
 			// Récupération du User avec les prédictions
 			const user = await User.findOne({
 				where: {
-					user_id: id,
+					user_id: req.user.user_id,
 				},
 				include: [
 					{
