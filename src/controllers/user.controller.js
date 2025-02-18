@@ -28,8 +28,9 @@ const userController = {
 
 	getTheUser: async (req, res, next) => {
 		try {
+			
 			// Récupération de l'ID
-			const { id } = req.params;
+			// const { id } = req.params;
 			// Récupération du User avec les prédictions
 			const user = await User.findOne({
 				where: {
