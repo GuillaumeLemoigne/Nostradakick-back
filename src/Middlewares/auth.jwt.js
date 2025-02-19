@@ -6,6 +6,7 @@ const authHandler = (req, res, next) => {
 
 	console.log(`etape1:${authHeader}`);
 
+
     // Vérification de l'existence du token
     if (!authHeader) {
         const error = new Error("Token manquant");
@@ -13,9 +14,8 @@ const authHandler = (req, res, next) => {
         return next(error);
     }
 
-    // Extraire le token après "Bearer"
-    const token = authHeader.split(" ")[1];
-	console.log(`etape2:${token}`);
+	// Extraire le token après "Bearer"
+	const token = authHeader.split(" ")[1];
 
     // Vérification du token
     try {

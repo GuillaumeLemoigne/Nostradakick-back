@@ -53,18 +53,18 @@ COMMIT; -- ✅ On valide les matchs
 BEGIN;
 
 INSERT INTO "user"
-("first_name","last_name","pseudo","email","password")
+("first_name","last_name","pseudo","email","password", "picture")
 VALUES
-('fabien','le goat','fabio','fabien.legoat@nostra.com','nostra'),
-('abdel','le coatch','zizou','abdel.lecoatch@nostra.com','nostra'),
-('lucas', 'dupont', 'lulu', 'lucas.dupont@nostra.com', 'nostra'),
-('marie', 'lefevre', 'marinette', 'marie.lefevre@nostra.com', 'nostra'),
-('julien', 'martin', 'juju', 'julien.martin@nostra.com', 'nostra'),
-('sophie', 'bernard', 'so', 'sophie.bernard@nostra.com', 'nostra'),
-('kevin', 'durand', 'keke', 'kevin.durand@nostra.com', 'nostra'),
-('amelie', 'robert', 'amie', 'amelie.robert@nostra.com', 'nostra'),
-('thomas', 'lambert', 'tomtom', 'thomas.lambert@nostra.com', 'nostra'),
-('camille', 'morel', 'cami', 'camille.morel@nostra.com', 'nostra');
+('fabien','le goat','fabio','fabien.legoat@nostra.com','nostra', 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExODZjMWtoYWg3MDd4ZGN6cHM3MDlsanAxOXEzcHp1a2Q0cWoyOWtmZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlIB9shbT2Awzhm/giphy.gif'),
+('abdel','le coatch','zizou','abdel.lecoatch@nostra.com','nostra', 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHBrOGx5eGt0Mng2cDExcDVuOWFjcjg1aTVlYzVzYWJwemVicTI2ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xThuWbpKdoOPIbQzcY/giphy.gif'),
+('lucas', 'dupont', 'lulu', 'lucas.dupont@nostra.com', 'nostra', 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXI4c3dwb2RrbXM5dzN4MXN4b2p6Mmt5emxqMWRjM200bjRuMXI0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xThtacNubem2Lfxf0Y/giphy.gif'),
+('marie', 'lefevre', 'marinette', 'marie.lefevre@nostra.com', 'nostra', 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmM2dHNqaDVqbTVkaHlib2V1cXg5ZTV6dnFyMXJ0d2tsNmFjYWdnNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26ufkg5NXQGIkembK/giphy.gif'),
+('julien', 'martin', 'juju', 'julien.martin@nostra.com', 'nostra', 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWRwcW56aHIyNml6aW95a3NpaDVwdWRjZWtrOHZodDdueWhjOTkzciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LpXU1smaWaVwR2v6Gu/giphy.gif'),
+('sophie', 'bernard', 'so', 'sophie.bernard@nostra.com', 'nostra', 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW5yNHptajc0NTg1ZTA0bWluZGMyYTM4aDAwa3BwbG1vd2Jwd3EzNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zzALYeLqMLDa6PEV2C/giphy.gif'),
+('kevin', 'durand', 'keke', 'kevin.durand@nostra.com', 'nostra', 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnk2Z3M3dWZpNzd1N3hmc3d3cGR0czRlbzFqc2l4aGkyZXkzMmNxYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7r5vNfdMVTVp7JkhGB/giphy.gif'),
+('amelie', 'robert', 'amie', 'amelie.robert@nostra.com', 'nostra', 'hhttps://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnlvNmM1MWczeXl6azN6Mm92dGx1dWxxYmdiZWdxdXI1M2NzdnZhZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lb4IZLmCfALhm/giphy.gif'),
+('thomas', 'lambert', 'tomtom', 'thomas.lambert@nostra.com', 'nostra', 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXlzZnJhMXRpYWcxOG5wMGl1djhjbW5vOTE3cms4aTBxbzloNHh1ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pdfZ4IS8NXKEMPES94/giphy.gif'),
+('camille', 'morel', 'cami', 'camille.morel@nostra.com', 'nostra', 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXNmcnUxYXpteXR2YXppMXl1bzlnaGkyaWd2ZnAzZ2c3cjVtNjBtbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rdma0nDFZMR32/giphy.gif');
 
 COMMIT;
 
