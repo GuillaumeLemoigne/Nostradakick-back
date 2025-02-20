@@ -128,6 +128,8 @@ const predictionController = {
 
 			// Création d'une prédiction
 			const createPrediction = await Prediction.create(predict);
+			console.log(createPrediction);
+			
 
 			// Vérification que la prédiction ai bien été crée
 			if (!createPrediction) {
