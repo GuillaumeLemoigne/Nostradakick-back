@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 const authentificationController = {
 	handleSignin: async (req, res, next) => {
 		try {
-			// Décomposition du req.body
+			// Destructuration du req.body
 			const { email, password } = req.body;
 
 			// Récupération du user
@@ -40,6 +40,8 @@ const authentificationController = {
 
 			// Création du token JWT
 			const token = jwt.sign(payload, process.env.JWT_SECRET, options);
+			console.log(token);
+			
 
 			// Message renvoyé
 			return res
