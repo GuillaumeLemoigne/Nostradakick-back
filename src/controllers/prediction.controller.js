@@ -147,6 +147,8 @@ const predictionController = {
 		try {
 			// Récupération de la prédiction a modifier
 			const patchPrediction = await Prediction.findByPk(req.params.id);
+			console.log(patchPrediction);
+			
 
 			// Vérification de la prédiction
 			if (!patchPrediction) {
@@ -173,12 +175,12 @@ const predictionController = {
 
 			// Modification de la valeur score_predi_home
 			if (score_predi_home !== undefined) {
-				patchPrediction.score_predi_home = score_predi_home;
+				score_predi_home = score_predi_home;
 			}
 
 			// Modification de la valeur score_predi_away
 			if (score_predi_away !== undefined) {
-				patchPrediction.score_predi_away = score_predi_away;
+				score_predi_away = score_predi_away;
 			}
 
 			// Enregistrement en BDD
@@ -194,19 +196,21 @@ const predictionController = {
 
 	deleteOnePrediction: async (req, res, next) => {
 		try {
-			// Récupération de l'id dans la request
-			const { id } = req.params;
+			// Récupération de l'id de la prédiction dans la request
+			const PredictionId = req.params.id;
+			
 			// Suppression du user
 			const deletePrediction = await Prediction.destroy({
 				where: {
-					prediction_id: id,
+					prediction_id: PredictionId,
 				},
 			});
+
 
 			// Retour de la réponse et d'un message pour confirmer la suppression
 			return res
 				.status(202)
-				.json({ message: "La prédiction a bien été supprimer !" });
+				.json({ message: "La prédiction a bien été supprimée !" });
 		} catch (error) {
 			error.status = 500;
 			return next(error);
