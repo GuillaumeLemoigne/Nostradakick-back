@@ -35,7 +35,7 @@ const authentificationController = {
 			};
 
 			const options = {
-				expiresIn: "1h", // Le token expire dans 1 heure
+				expiresIn: "5h", // Le token expire dans 5 heure
 			};
 
 			// Création du token JWT
