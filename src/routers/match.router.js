@@ -10,7 +10,7 @@ matchRouter.get("/api/matchs", matchController.getAllMatch);
 matchRouter.get("/api/results");
 
 // La routes de notre API de consultation du calendrier des matchs à venir dans la compétition
-matchRouter.get("/api/calendar");
+matchRouter.get("/api/calendar", matchController.getUpcomingMatch);
 
 // La route de notre API de consultation des informations (principalement le résultat) des matchs de football en cours
 matchRouter.get("/api/inplay");
