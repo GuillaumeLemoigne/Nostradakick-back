@@ -1,5 +1,5 @@
 import { Router } from "express";
-import predictionController from "../controllers/prediction.controller.js";
+import predictionController from "../Controllers/prediction.controller.js";
 import { authHandler } from "../Middlewares/auth.jwt.js";
 
 const predictionRouter = Router();

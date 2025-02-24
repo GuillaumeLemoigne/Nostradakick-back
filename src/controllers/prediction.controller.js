@@ -44,6 +44,10 @@ const predictionController = {
 				"number.base": "match_id doit être un nombre",
 				"any.required": "match_id est requis",
 			}),
+			prediction_id: Joi.number().integer().required().messages({
+				"number.base": "match_id doit être un nombre",
+				"any.required": "match_id est requis",
+			}),
 		});
 
 		const { error } = schema.validate(data, { abortEarly: false });
@@ -112,7 +116,6 @@ const predictionController = {
 
 	createOnePrediction: async (req, res, next) => {
 		try {
-
 			// Validation des inputs avec JOI
 			const error = predictionController.validate(req.body);
 
@@ -129,7 +132,6 @@ const predictionController = {
 			// Création d'une prédiction
 			const createPrediction = await Prediction.create(predict);
 			console.log(createPrediction);
-			
 
 			// Vérification que la prédiction ai bien été crée
 			if (!createPrediction) {
@@ -147,8 +149,7 @@ const predictionController = {
 		try {
 			// Récupération de la prédiction a modifier
 			const patchPrediction = await Prediction.findByPk(req.params.id);
-			console.log(patchPrediction);
-			
+			console.log(JSON.stringify(patchPrediction, null, 2));
 
 			// Vérification de la prédiction
 			if (!patchPrediction) {
@@ -175,16 +176,18 @@ const predictionController = {
 
 			// Modification de la valeur score_predi_home
 			if (score_predi_home !== undefined) {
-				score_predi_home = score_predi_home;
+				patchPrediction.score_predi_home = score_predi_home;
 			}
 
 			// Modification de la valeur score_predi_away
 			if (score_predi_away !== undefined) {
-				score_predi_away = score_predi_away;
+				patchPrediction.score_predi_away = score_predi_away;
 			}
 
 			// Enregistrement en BDD
 			await patchPrediction.save();
+
+			console.log(JSON.stringify(patchPrediction, 2, null));
 
 			// Retour de la réponse avec la prédiction modifié
 			return res.status(201).json(patchPrediction);
@@ -198,14 +201,13 @@ const predictionController = {
 		try {
 			// Récupération de l'id de la prédiction dans la request
 			const PredictionId = req.params.id;
-			
+
 			// Suppression du user
 			const deletePrediction = await Prediction.destroy({
 				where: {
 					prediction_id: PredictionId,
 				},
 			});
-
 
 			// Retour de la réponse et d'un message pour confirmer la suppression
 			return res
