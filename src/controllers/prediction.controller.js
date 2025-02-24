@@ -44,7 +44,7 @@ const predictionController = {
 				"number.base": "match_id doit être un nombre",
 				"any.required": "match_id est requis",
 			}),
-			prediction_id: Joi.number().integer().required().messages({
+			prediction_id: Joi.number().integer().messages({
 				"number.base": "match_id doit être un nombre",
 				"any.required": "match_id est requis",
 			}),
@@ -116,11 +116,15 @@ const predictionController = {
 
 	createOnePrediction: async (req, res, next) => {
 		try {
+			console.log("je crée une prédiction");
+
 			// Validation des inputs avec JOI
 			const error = predictionController.validate(req.body);
 
 			// Vérification si erreur JOI
 			if (error) {
+				console.log("j'ai une erreur dans JOI");
+
 				return next(error);
 			}
 
@@ -157,7 +161,15 @@ const predictionController = {
 			}
 
 			// Destructuration de req.body
-			const { score_predi_home, score_predi_away } = req.body;
+			const {
+				score_predi_home,
+				score_predi_away,
+				points_score,
+				points_outcome,
+			} = req.body;
+
+			console.log(req.body);
+			console.log(points_outcome);
 
 			// Validation des inputs dans JOI
 			const error = predictionController.validate(req.body);
@@ -168,7 +180,12 @@ const predictionController = {
 			}
 
 			// Vérification des données reçu, savoir si elle existe
-			if (!score_predi_away && !score_predi_home) {
+			if (
+				!score_predi_away &&
+				!score_predi_home &&
+				points_score === undefined &&
+				points_outcome === undefined
+			) {
 				const error = new Error("Mauvaise requête");
 				error.status = 400;
 				return next(error);
@@ -183,11 +200,22 @@ const predictionController = {
 			if (score_predi_away !== undefined) {
 				patchPrediction.score_predi_away = score_predi_away;
 			}
+			// Modification de la valeur score_predi_home
+			if (points_score) {
+				console.log(points_score);
+				patchPrediction.points_score = points_score;
+			}
+
+			// Modification de la valeur score_predi_away
+			if (points_outcome) {
+				console.log(points_outcome);
+				patchPrediction.points_outcome = points_outcome;
+			}
+
+			console.log(JSON.stringify(patchPrediction, 2, null));
 
 			// Enregistrement en BDD
 			await patchPrediction.save();
-
-			console.log(JSON.stringify(patchPrediction, 2, null));
 
 			// Retour de la réponse avec la prédiction modifié
 			return res.status(201).json(patchPrediction);
