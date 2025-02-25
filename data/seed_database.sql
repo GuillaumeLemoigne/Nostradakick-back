@@ -13,12 +13,12 @@ BEGIN;
 INSERT INTO "team"
 ("name","country","city","logo")
 VALUES
-('paris saint-germain', 'france', 'paris', 'https://media.api-sports.io/football/teams/85.png'),
-('olympique de marseille', 'france', 'marseille', 'https://media.api-sports.io/football/teams/81.png'),
-('as monaco', 'france', 'monaco', 'https://media.api-sports.io/football/teams/91.png'),
-('losc lille', 'france', 'lille', 'https://media.api-sports.io/football/teams/79.png'),
-('ogc nice', 'france', 'nice', 'https://media.api-sports.io/football/teams/84.png'),
-('rc lens', 'france', 'lens', 'https://media.api-sports.io/football/teams/116.png'),
+('Paris Saint-germain', 'france', 'paris', 'https://media.api-sports.io/football/teams/85.png'),
+('Olympique de Marseille', 'france', 'marseille', 'https://media.api-sports.io/football/teams/81.png'),
+('AS Monaco', 'france', 'monaco', 'https://media.api-sports.io/football/teams/91.png'),
+('LOSC Lille', 'france', 'lille', 'https://media.api-sports.io/football/teams/79.png'),
+('OGC Nice', 'france', 'nice', 'https://media.api-sports.io/football/teams/84.png'),
+('RC Lens', 'france', 'lens', 'https://media.api-sports.io/football/teams/116.png'),
 ('Angers SCO', 'France', 'Angers', 'https://media.api-sports.io/football/teams/77.png'),
 ('AJ Auxerre', 'France', 'Auxerre', 'https://media.api-sports.io/football/teams/108.png'),
 ('Stade Brestois 29', 'France', 'Brest', 'https://media.api-sports.io/football/teams/106.png'),
