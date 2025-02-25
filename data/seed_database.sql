@@ -13,7 +13,7 @@ BEGIN;
 INSERT INTO "team"
 ("name","country","city","logo")
 VALUES
-('Paris Saint-germain', 'france', 'paris', 'https://media.api-sports.io/football/teams/85.png'),
+('Paris Saint-Germain', 'france', 'paris', 'https://media.api-sports.io/football/teams/85.png'),
 ('Olympique de Marseille', 'france', 'marseille', 'https://media.api-sports.io/football/teams/81.png'),
 ('AS Monaco', 'france', 'monaco', 'https://media.api-sports.io/football/teams/91.png'),
 ('LOSC Lille', 'france', 'lille', 'https://media.api-sports.io/football/teams/79.png'),
@@ -206,6 +206,6 @@ INSERT INTO "own"
 ("competition_id","team_id")
 VALUES
 ((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'),
- (SELECT "team_id" FROM "team" WHERE "name" = 'paris saint-germain'));
+ (SELECT "team_id" FROM "team" WHERE "name" = 'Paris Saint-Germain'));
 
 COMMIT;

@@ -149,9 +149,9 @@ VALUES
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Stade Brestois 29') LIMIT 1), 'away'),
  -- Match 15 : Nantes vs Auxerre
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade de la Beaujoire') AND "date" = '2025-03-02 16:00:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'home'),
+ (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('FC Nantes') LIMIT 1), 'home'),
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade de la Beaujoire') AND "date" = '2025-03-02 16:00:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Stade Brestois 29') LIMIT 1), 'away'),
+ (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AJ Auxerre') LIMIT 1), 'away'),
  -- Match 16 : Nice vs Toulouse
 ((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Allianz Riviera') AND "date" = '2025-03-02 16:00:00+02' LIMIT 1),
  (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('OGC Nice') LIMIT 1), 'home'),
