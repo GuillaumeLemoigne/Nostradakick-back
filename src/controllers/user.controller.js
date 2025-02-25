@@ -9,7 +9,7 @@ const userController = {
 			const allUsers = await User.findAll({
 				attributes: ["pseudo", "picture"],
 				include: [
-					{ 
+					{
 						association: "prediction",
 					},
 				],
@@ -28,7 +28,6 @@ const userController = {
 
 	getTheUser: async (req, res, next) => {
 		try {
-			
 			// Récupération du User avec les prédictions
 			const user = await User.findOne({
 				where: {
@@ -40,7 +39,7 @@ const userController = {
 					},
 				],
 			});
-			console.log('etape4', user.toJSON());
+			console.log("etape4", user.toJSON());
 
 			// Vérification de l'existance du user
 			if (!user) return next();
@@ -142,9 +141,9 @@ const userController = {
 					user_id: req.user.user_id,
 				},
 			});
-	
-			return res.status(202).json({ 
-				message: "L'utilisateur a bien été supprimé !" 
+
+			return res.status(202).json({
+				message: "L'utilisateur a bien été supprimé !",
 			});
 		} catch (error) {
 			error.status = 500;

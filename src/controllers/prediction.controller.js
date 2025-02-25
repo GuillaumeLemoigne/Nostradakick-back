@@ -44,6 +44,10 @@ const predictionController = {
 				"number.base": "match_id doit être un nombre",
 				"any.required": "match_id est requis",
 			}),
+			prediction_id: Joi.number().integer().messages({
+				"number.base": "match_id doit être un nombre",
+				"any.required": "match_id est requis",
+			}),
 		});
 
 		const { error } = schema.validate(data, { abortEarly: false });
@@ -112,12 +116,15 @@ const predictionController = {
 
 	createOnePrediction: async (req, res, next) => {
 		try {
+			console.log("je crée une prédiction");
 
 			// Validation des inputs avec JOI
 			const error = predictionController.validate(req.body);
 
 			// Vérification si erreur JOI
 			if (error) {
+				console.log("j'ai une erreur dans JOI");
+
 				return next(error);
 			}
 
@@ -129,7 +136,6 @@ const predictionController = {
 			// Création d'une prédiction
 			const createPrediction = await Prediction.create(predict);
 			console.log(createPrediction);
-			
 
 			// Vérification que la prédiction ai bien été crée
 			if (!createPrediction) {
@@ -147,8 +153,7 @@ const predictionController = {
 		try {
 			// Récupération de la prédiction a modifier
 			const patchPrediction = await Prediction.findByPk(req.params.id);
-			console.log(patchPrediction);
-			
+			console.log(JSON.stringify(patchPrediction, null, 2));
 
 			// Vérification de la prédiction
 			if (!patchPrediction) {
@@ -156,7 +161,15 @@ const predictionController = {
 			}
 
 			// Destructuration de req.body
-			const { score_predi_home, score_predi_away } = req.body;
+			const {
+				score_predi_home,
+				score_predi_away,
+				points_score,
+				points_outcome,
+			} = req.body;
+
+			console.log(req.body);
+			console.log(points_outcome);
 
 			// Validation des inputs dans JOI
 			const error = predictionController.validate(req.body);
@@ -167,7 +180,12 @@ const predictionController = {
 			}
 
 			// Vérification des données reçu, savoir si elle existe
-			if (!score_predi_away && !score_predi_home) {
+			if (
+				!score_predi_away &&
+				!score_predi_home &&
+				points_score === undefined &&
+				points_outcome === undefined
+			) {
 				const error = new Error("Mauvaise requête");
 				error.status = 400;
 				return next(error);
@@ -175,13 +193,26 @@ const predictionController = {
 
 			// Modification de la valeur score_predi_home
 			if (score_predi_home !== undefined) {
-				score_predi_home = score_predi_home;
+				patchPrediction.score_predi_home = score_predi_home;
 			}
 
 			// Modification de la valeur score_predi_away
 			if (score_predi_away !== undefined) {
-				score_predi_away = score_predi_away;
+				patchPrediction.score_predi_away = score_predi_away;
 			}
+			// Modification de la valeur score_predi_home
+			if (points_score) {
+				console.log(points_score);
+				patchPrediction.points_score = points_score;
+			}
+
+			// Modification de la valeur score_predi_away
+			if (points_outcome) {
+				console.log(points_outcome);
+				patchPrediction.points_outcome = points_outcome;
+			}
+
+			console.log(JSON.stringify(patchPrediction, 2, null));
 
 			// Enregistrement en BDD
 			await patchPrediction.save();
@@ -198,14 +229,13 @@ const predictionController = {
 		try {
 			// Récupération de l'id de la prédiction dans la request
 			const PredictionId = req.params.id;
-			
+
 			// Suppression du user
 			const deletePrediction = await Prediction.destroy({
 				where: {
 					prediction_id: PredictionId,
 				},
 			});
-
 
 			// Retour de la réponse et d'un message pour confirmer la suppression
 			return res

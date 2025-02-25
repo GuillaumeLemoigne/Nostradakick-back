@@ -8,7 +8,8 @@
 		"dev": "node --watch app.js",
 		"db:create": "psql -U nostra -d nostra -f ./data/create_table.sql",
 		"db:seed": "psql -U nostra -d nostra -f ./data/seed_database.sql",
-		"db:reset": "npm run db:create && npm run db:seed"
+		"db:migration": "psql -U nostra -d nostra -f ./data/migration_database.sql",
+		"db:reset": "npm run db:create && npm run db:seed && npm run db:migration"
 	},
 	"author": "Abdel Zahri - Abdelhak Es-shih - Guillaume Lemoigne - Fabien Gensane - Yvan Trouillet",
 	"license": "ISC",

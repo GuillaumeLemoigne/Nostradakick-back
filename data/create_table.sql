@@ -45,7 +45,7 @@ CREATE TABLE "user" (
     "pseudo" VARCHAR(255) UNIQUE NOT NULL,
     "email" VARCHAR(255) UNIQUE NOT NULL,
     "password" TEXT NOT NULL,
-    "picture" TEXT,
+    "picture" TEXT DEFAULT 'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmc0dWt0ZWgzdHp5eDVqd3Z1dzlsNWtramtkcWF2eTN4bnBuZGJiciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ov4NWitFsfRyfqdSg3/giphy.gif',
     "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" timestamptz
 );
