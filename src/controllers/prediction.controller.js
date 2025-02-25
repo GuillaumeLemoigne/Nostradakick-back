@@ -169,7 +169,6 @@ const predictionController = {
 			} = req.body;
 
 			console.log(req.body);
-			console.log(points_outcome);
 
 			// Validation des inputs dans JOI
 			const error = predictionController.validate(req.body);
@@ -201,22 +200,21 @@ const predictionController = {
 				patchPrediction.score_predi_away = score_predi_away;
 			}
 			// Modification de la valeur score_predi_home
-			if (points_score) {
+			if (points_score !== undefined) {
 				console.log(points_score);
 				patchPrediction.points_score = points_score;
 			}
 
 			// Modification de la valeur score_predi_away
-			if (points_outcome) {
+			if (points_outcome !== undefined) {
 				console.log(points_outcome);
 				patchPrediction.points_outcome = points_outcome;
 			}
 
-			console.log(JSON.stringify(patchPrediction, 2, null));
-
 			// Enregistrement en BDD
 			await patchPrediction.save();
 
+			console.log(JSON.stringify(patchPrediction, 2, null));
 			// Retour de la réponse avec la prédiction modifié
 			return res.status(201).json(patchPrediction);
 		} catch (error) {
