@@ -8,7 +8,7 @@ matchRouter.get("/api/matchs", matchController.getAllMatch);
 
 // La route de notre API de consultation de tous les matchs sur lesquels l'utilisateur à parié depuis son inscription et des matchs sur lesquels il a parié et qui ne se sont pas encore déroulés.
 // Route non MVP à déterminer pour la partie "profil" de l'utilisateur
-//matchRouter.get("/api/matchs/profil", authHandler, matchController.getAllMatch);
+matchRouter.get("/api/matchs/profil", authHandler, matchController.getAllMatch);
 
 // Les routes de notre API CRUD de gestion des résultats des matchs de football passés
 matchRouter.get("/api/results", matchController.getEndedMatch);
