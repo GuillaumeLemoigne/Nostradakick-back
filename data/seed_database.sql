@@ -40,26 +40,26 @@ BEGIN;
 INSERT INTO "match"
 ("competition_id","date","stadium","score_home","score_away","outcome")
 VALUES
--- Match 1 : PSG vs OM
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:00:00+02', 'Parc des Princes', 2, 1, 'home win'),
--- Match 2 : OM vs LOSC Lille
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:05:00+02', 'Stade Vélodrome', 1, 0, 'home win'),
--- Match 3 : AS Monaco vs RC Lens
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:10:00+02', 'Stade Louis II', 3, 2, 'home win'),
--- Match 4 : LOSC Lille vs RC Lens
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:15:00+02', 'Stade Pierre-Mauroy', 1, 1, 'neutral'),
--- Match 5 : OGC Nice vs LOSC Lille
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:20:00+02', 'Allianz Riviera', 0, 2, 'away win'),
--- Match 6 : RC Lens vs Olympique de Marseille
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:25:00+02', 'Stade Bollaert-Delelis', 2, 0, 'home win'),
--- Match 7 : PSG vs AS Monaco
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:30:00+02', 'Parc des Princes', 3, 1, 'home win'),
--- Match 8 : Olympique de Marseille vs OGC Nice
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:35:00+02', 'Stade Vélodrome', 2, 2, 'neutral'),
--- Match 9 : AS Monaco vs OGC Nice
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:40:00+02', 'Stade Louis II', 1, 3, 'away win'),
--- Match 10 : LOSC Lille vs PSG
-((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-02-24 20:45:00+02', 'Stade Pierre-Mauroy', 0, 1, 'away win');
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-05 16:00:00+02', 'Stade Océane', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-07 16:00:00+02', 'Stade Francis Le Blé', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-09 16:00:00+02', 'Stade Auguste Delaune', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-11 16:00:00+02', 'Stade Louis II', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-13 16:00:00+02', 'Stade Abbé-Deschamps', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-15 16:00:00+02', 'Stade Raymond Kopa', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-17 16:00:00+02', 'Stade de la Mosson', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-19 16:00:00+02', 'Stadium de Toulouse', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-21 16:00:00+02', 'Roazhon Park', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-23 16:00:00+02', 'Parc des Princes', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-25 16:00:00+02', 'Groupama Stadium', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-27 16:00:00+02', 'Stade Pierre-Mauroy', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-29 16:00:00+02', 'Stade Geoffroy-Guichard', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-07-31 16:00:00+02', 'Stade Bollaert-Delelis', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-08-02 16:00:00+02', 'Stade de la Beaujoire', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-08-04 16:00:00+02', 'Allianz Riviera', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-08-06 16:00:00+02', 'Stade de la Meinau', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-08-08 16:00:00+02', 'Orange Vélodrome', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-08-10 16:00:00+02', 'Groupama Stadium', 1, 2, 'away win'),
+((SELECT "competition_id" FROM "competition" WHERE "name" = 'ligue 1'), '2025-08-12 16:00:00+02', 'Stade Francis-Le Blé', 1, 2, 'away win');
 
 COMMIT; -- ✅ On valide les matchs
 
@@ -137,65 +137,47 @@ BEGIN;
 INSERT INTO "play" ("match_id", "team_id", "role")
 VALUES
 
--- Match 1 : PSG vs OM
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') AND "date" = '2025-02-24 20:00:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Paris Saint-Germain') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Océane' AND "date" = '2025-07-05 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Le Havre AC'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Océane' AND "date" = '2025-07-05 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Paris Saint-Germain'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Francis Le Blé' AND "date" = '2025-07-07 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade Brestois 29'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Francis Le Blé' AND "date" = '2025-07-07 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Olympique de Marseille'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Auguste Delaune' AND "date" = '2025-07-09 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade de Reims'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Auguste Delaune' AND "date" = '2025-07-09 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'LOSC Lille'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Louis II' AND "date" = '2025-07-11 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AS Monaco'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Louis II' AND "date" = '2025-07-11 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AS Saint-Étienne'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Abbé-Deschamps' AND "date" = '2025-07-13 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AJ Auxerre'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Abbé-Deschamps' AND "date" = '2025-07-13 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'OGC Nice'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Raymond Kopa' AND "date" = '2025-07-15 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Angers SCO'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Raymond Kopa' AND "date" = '2025-07-15 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'RC Lens'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade de la Mosson' AND "date" = '2025-07-17 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Montpellier HSC'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade de la Mosson' AND "date" = '2025-07-17 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'RC Strasbourg Alsace'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stadium de Toulouse' AND "date" = '2025-07-19 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Toulouse FC'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stadium de Toulouse' AND "date" = '2025-07-19 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'FC Nantes'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Roazhon Park' AND "date" = '2025-07-21 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade Rennais FC'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Roazhon Park' AND "date" = '2025-07-21 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Olympique Lyonnais'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Parc des Princes' AND "date" = '2025-07-23 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Paris Saint-Germain'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Parc des Princes' AND "date" = '2025-07-23 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Montpellier HSC'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Groupama Stadium' AND "date" = '2025-07-25 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Olympique Lyonnais'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Groupama Stadium' AND "date" = '2025-07-25 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AS Monaco'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Pierre-Mauroy' AND "date" = '2025-07-27 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'LOSC Lille'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Pierre-Mauroy' AND "date" = '2025-07-27 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Angers SCO'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Geoffroy-Guichard' AND "date" = '2025-07-29 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AS Saint-Étienne'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Geoffroy-Guichard' AND "date" = '2025-07-29 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Le Havre AC'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Bollaert-Delelis' AND "date" = '2025-07-31 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'RC Lens'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Bollaert-Delelis' AND "date" = '2025-07-31 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade Brestois 29'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade de la Beaujoire' AND "date" = '2025-08-02 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'FC Nantes'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade de la Beaujoire' AND "date" = '2025-08-02 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AJ Auxerre'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Allianz Riviera' AND "date" = '2025-08-04 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'OGC Nice'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Allianz Riviera' AND "date" = '2025-08-04 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Toulouse FC'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade de la Meinau' AND "date" = '2025-08-06 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'RC Strasbourg Alsace'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade de la Meinau' AND "date" = '2025-08-06 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade Rennais FC'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Orange Vélodrome' AND "date" = '2025-08-08 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Olympique de Marseille'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Orange Vélodrome' AND "date" = '2025-08-08 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade de Reims'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Groupama Stadium' AND "date" = '2025-08-10 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Olympique Lyonnais'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Groupama Stadium' AND "date" = '2025-08-10 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'RC Strasbourg Alsace'), 'away'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Francis-Le Blé' AND "date" = '2025-08-12 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'Stade Brestois 29'), 'home'),
+((SELECT "match_id" FROM "match" WHERE "stadium" = 'Stade Francis-Le Blé' AND "date" = '2025-08-12 16:00:00+02' LIMIT 1), (SELECT "team_id" FROM "team" WHERE "name" ILIKE 'AS Saint-Étienne'), 'away');
 
- -- Match 2 : Olympique de Marseille vs LOSC Lille
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Vélodrome') AND "date" = '2025-02-24 20:05:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Vélodrome') AND "date" = '2025-02-24 20:05:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('LOSC Lille') LIMIT 1), 'away'),
-
- -- Match 3 : AS Monaco vs RC Lens
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis II') AND "date" = '2025-02-24 20:10:00+02'  LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis II') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'away'),
-
- -- Match 4 : LOSC Lille vs RC Lens
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Pierre-Mauroy') AND "date" = '2025-02-24 20:15:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('LOSC Lille') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Pierre-Mauroy') AND "date" = '2025-02-24 20:15:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'away'),
-
--- Match 5 : OGC Nice vs LOSC Lille
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Allianz Riviera') AND "date" = '2025-02-24 20:20:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('OGC Nice') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Allianz Riviera') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('LOSC Lille') LIMIT 1), 'away'),
-
--- Match 6 : RC Lens vs Olympique de Marseille
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis') AND "date" = '2025-02-24 20:25:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('RC Lens') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Bollaert-Delelis') LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'away'),
-
--- Match 7 : PSG vs AS Monaco
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') AND "date" = '2025-02-24 20:30:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Paris Saint-Germain') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Parc des Princes') AND "date" = '2025-02-24 20:30:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'away'),
- 
--- Match 8 : Olympique de Marseille vs OGC Nice
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Vélodrome') AND "date" = '2025-02-24 20:35:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Olympique de Marseille') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Vélodrome') AND "date" = '2025-02-24 20:35:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('OGC Nice') LIMIT 1), 'away'),
-
--- Match 9 : AS Monaco vs OGC Nice
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis II') AND "date" = '2025-02-24 20:40:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('AS Monaco') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Louis II') AND "date" = '2025-02-24 20:40:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('OGC Nice') LIMIT 1), 'away'),
-
--- Match 10 : LOSC Lille vs PSG
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Pierre-Mauroy') AND "date" = '2025-02-24 20:45:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('LOSC Lille') LIMIT 1), 'home'),
-((SELECT "match_id" FROM "match" WHERE LOWER("stadium") = LOWER('Stade Pierre-Mauroy') AND "date" = '2025-02-24 20:45:00+02' LIMIT 1),
- (SELECT "team_id" FROM "team" WHERE LOWER("name") = LOWER('Paris Saint-Germain') LIMIT 1), 'away');
 
  
 COMMIT;
