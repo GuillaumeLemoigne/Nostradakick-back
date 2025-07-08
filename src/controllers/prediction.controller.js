@@ -15,8 +15,8 @@ const predictionController = {
 					"number.integer": "le score doit être un nombre entier",
 					"number.min": "le score doit être au minimum {#limit}",
 					"number.max": "le score ne peut pas dépasser {#limit}",
+					"number.required": "le score est requis",
 				}),
-
 			score_predi_away: Joi.number()
 				.integer()
 				.min(0)
@@ -27,6 +27,7 @@ const predictionController = {
 					"number.integer": "le score doit être un nombre entier",
 					"number.min": "le score doit être au minimum {#limit}",
 					"number.max": "le score ne peut pas dépasser {#limit}",
+					"number.required": "le score est requis",
 				}),
 			points_score: Joi.number().integer().min(0).max(50).messages({
 				"number.base": "le score doit être un nombre",
